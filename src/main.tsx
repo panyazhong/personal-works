@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import Home from "./containers/home/index.tsx";
 import Content from "./containers/content/index.tsx";
 import PersonalWorks from "./containers/personal-works/index.tsx";
+import ArticleDetail from "./containers/personal-works/article-detail.tsx";
 
 const router = createHashRouter([
   {
@@ -24,6 +25,10 @@ const router = createHashRouter([
       {
         path: "/personal-works",
         element: <PersonalWorks />,
+      },
+      {
+        path: "/detail/:id",
+        element: <ArticleDetail />,
       },
     ],
   },
