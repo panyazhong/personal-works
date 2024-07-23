@@ -1,44 +1,89 @@
+import { Select } from "antd";
+import { useAtom } from "jotai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { tw } from "twind";
+import { localeAtom } from "../models/store";
 
 const Header = () => {
   const Menus = [
     {
-      label: "首页",
+      label: {
+        zh: "首页",
+        en: "Homepage",
+        fr: "Page d’acceuil",
+      },
       path: "/",
     },
     {
-      label: "艺术家简介",
+      label: {
+        zh: "艺术家简介",
+        en: "About the Artist",
+        fr: "A propos de l’Artiste",
+      },
       path: "/author",
     },
     {
-      label: "绘画作品",
+      label: {
+        zh: "绘画作品",
+        en: "Paintings",
+        fr: "Peintures",
+      },
       path: "/personal",
     },
     {
-      label: "纪录片作品",
+      label: {
+        zh: "纪录片作品",
+        en: "Documentary Works",
+        fr: "Documentaires",
+      },
       path: "/",
     },
     {
-      label: "协会简介",
+      label: {
+        zh: "协会简介",
+        en: "About the Union",
+        fr: "A propos de l’Union",
+      },
       path: "/association-introduction",
     },
 
     {
-      label: "海怪工作室",
+      label: {
+        zh: "海怪工作室",
+        en: "Atelier Sea Monster",
+        fr: "Atelier Sea Monster",
+      },
       // path: "/personal-works",
       path: "/studio-info",
     },
     {
-      label: "展讯",
+      label: {
+        zh: "展讯",
+        en: "Exhibition News",
+        fr: "Actualités d’expositions",
+      },
       path: "/exhibition-news",
+    },
+  ];
+
+  const options = [
+    {
+      label: "中文",
+      value: "zh",
+    },
+    {
+      label: "English",
+      value: "en",
+    },
+    {
+      label: "Français",
+      value: "fr",
     },
   ];
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location);
+  const [locale, setLocale] = useAtom(localeAtom);
 
   return (
     <div
@@ -70,12 +115,20 @@ const Header = () => {
               navigate(menu.path);
             }}
           >
-            {menu.label}
+            {menu.label[locale]}
           </div>
         ))}
       </div>
 
-      <div>{/* <Button type="primary">aa</Button> */}</div>
+      <div>
+        {/* <Button type="primary">aa</Button> */}
+        <Select
+          className={tw`w-[100px]`}
+          options={options}
+          value={locale}
+          onChange={(v) => setLocale(v)}
+        />
+      </div>
     </div>
   );
 };
