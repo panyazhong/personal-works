@@ -1,6 +1,4 @@
-import { Timeline } from "antd";
 import { tw } from "twind";
-import bg from "@/assets/bg.png";
 import { css } from "twind/css";
 
 const AuthorInfo = () => {

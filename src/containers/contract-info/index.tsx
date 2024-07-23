@@ -32,11 +32,6 @@ const ContractInfo = () => {
       },
     },
   };
-  const titleMap = {
-    zh: "联系方式：",
-    en: "CONTACT INFORMATION：",
-    fr: "CONTACT：",
-  };
 
   const [locale] = useAtom(localeAtom);
 
