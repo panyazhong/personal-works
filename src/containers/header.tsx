@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const Menus = [
@@ -64,6 +65,14 @@ const Header = () => {
       },
       path: "/exhibition-news",
     },
+    {
+      label: {
+        zh: "联系方式",
+        en: "Contact Information",
+        fr: "Contact",
+      },
+      path: "/contract-info",
+    },
   ];
 
   const options = [
@@ -87,37 +96,37 @@ const Header = () => {
 
   return (
     <div
-      className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-100 text-frc-300`}
+      className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-50 text-frc-100`}
     >
-      <div
-        onClick={() => {
-          navigate("/");
-        }}
-        className={tw`cursor-pointer`}
-      >
-        <img
-          src="https://theme.hozen.site/tranquility/images/logo.svg"
-          alt=""
-          className={tw`w-[50px]`}
-        />
-      </div>
-      <div className={tw`flex gap-2 text-frc-300 font-bold text-base`}>
-        {Menus.map((menu) => (
-          <div
-            className={tw`cursor-pointer hover:text-underline
+      <div className={tw`flex items-center`}>
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className={tw`cursor-pointer`}
+        >
+          <img src={logo} alt="" className={tw`w-[50px] rounded-full`} />
+        </div>
+        <div
+          className={tw`flex gap-2 text-frc-100 font-bold text-base ml-[20px]`}
+        >
+          {Menus.map((menu) => (
+            <div
+              className={tw`cursor-pointer hover:text-underline
               ${
                 location.pathname === menu.path
-                  ? "text-underline text-frc-400"
+                  ? "text-underline text-frc-200"
                   : ""
               }
             `}
-            onClick={() => {
-              navigate(menu.path);
-            }}
-          >
-            {menu.label[locale]}
-          </div>
-        ))}
+              onClick={() => {
+                navigate(menu.path);
+              }}
+            >
+              {menu.label[locale]}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div>

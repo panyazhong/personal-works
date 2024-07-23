@@ -43,13 +43,13 @@ const Content = () => {
     >
       {imgList.map((item) => (
         <div
-          className={tw`border border-[#e4e4e4] flex flex-col justify-center items-center rounded-[10px] shadow-1lv`}
+          className={tw`border border-frc-400 flex flex-col justify-center items-center rounded-[10px] shadow-1lv`}
         >
           <div className={tw`flex-1 flex items-center rounded-[10px] p-2`}>
             <img className={tw`rounded-[4px]`} src={item.src} />{" "}
           </div>
           <div
-            className={tw`h-[48px] w-full border-t-1 border-t-[#e4e4e4] flex items-center px-2`}
+            className={tw`h-[48px] w-full border-t-1 border-t-frc-400 text-frc-100 flex items-center px-2`}
           >
             title
           </div>

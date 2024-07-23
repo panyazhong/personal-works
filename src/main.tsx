@@ -8,10 +8,11 @@ import PersonalWorks from "./containers/personal-works/index.tsx";
 import ArticleDetail from "./containers/personal-works/article-detail.tsx";
 import AuthorInfo from "./containers/author-info/index.tsx";
 import AssociationIntroduction from "./containers/association-introduction/index.tsx";
-
-import "./index.css";
 import ExhibitionNews from "./containers/exhibition-news/index.tsx";
 import StudioInfo from "./containers/studio-info/index.tsx";
+
+import "./index.css";
+import ContractInfo from "./containers/contract-info/index.tsx";
 
 const router = createHashRouter([
   {
@@ -49,6 +50,10 @@ const router = createHashRouter([
       {
         path: "/studio-info",
         element: <StudioInfo />,
+      },
+      {
+        path: "/contract-info",
+        element: <ContractInfo />,
       },
     ],
   },

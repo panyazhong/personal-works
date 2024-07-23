@@ -15,13 +15,17 @@ setup({
         "1lv":
           "0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12),0 1px 5px 0 rgba(0,0,0,.2)",
       },
+      backgroundImage: {
+        "author-bg": "url('/src/assets/bg.png')",
+      },
     },
     colors: {
       frc: {
-        100: "#fefefe",
+        50: "#191B1C",
+        100: "#ffebc8",
         200: "#fcfcfb",
         300: "#383838",
-        400: "#555",
+        400: "#35393B",
         500: "#666",
       },
       frcFont: {
@@ -34,7 +38,7 @@ setup({
 const App = () => {
   return (
     <>
-      <div className={tw`flex flex-col w-full h-full`}>
+      <div className={tw`flex flex-col w-full h-full bg-frc-50`}>
         <Header />
         <div className={tw`flex-1 overflow-hidden`}>
           <Outlet />
