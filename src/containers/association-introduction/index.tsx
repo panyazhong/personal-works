@@ -17,7 +17,7 @@ const AssociationIntroduction = () => {
             <p>• 2017年6月中法艺术家协会(UAFC法国)于法国巴黎政府注册批准，并在法兰西共和国日报官方公开宣布成立。</p>
             <p>• 中法艺术家协会(UAFC法国)，以中法两国艺术文化交流发展、创新开拓艺术领域为宗旨，致力于为中法两国艺术家构建专业艺术交流平台、创造跨领域合作机会，并挖掘和支持新独立艺术家。联合中法两国艺术家共同进行艺术推广，建设与发展中法两国之间的艺术文化交流活动。</p>`,
       en: `<p>UNION OF FRENCH AND CHINESE ARTISTS (UAFC, Union des ArtistesFranco-Chinois)</p>
-            <pIn June 2017, the registration of the Union of French and Chinese
+            <p>In June 2017, the registration of the Union of French and Chinese
             Artists (UAFC) was approved by the Paris authorities and its
             etablisment was officially announced in the Official Journal of the
             French Republic.</p>
