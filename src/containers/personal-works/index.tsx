@@ -1,6 +1,6 @@
 import { tw } from "twind";
 import { useNavigate } from "react-router-dom";
-import ArticleDetail from "./article-detail";
+// import ArticleDetail from "./article-detail";
 
 const PersonalWorks = () => {
   const list = [
