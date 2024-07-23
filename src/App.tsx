@@ -1,9 +1,10 @@
-import { setup } from "twind";
+import { setup, tw } from "twind";
 import "./App.css";
-import { PropsWithChildren } from "react";
 import Header from "./containers/header";
 import { Outlet } from "react-router-dom";
+import enUS from "antd/es/locale/en_US";
 
+console.log(enUS);
 setup({
   theme: {
     extend: {
@@ -33,9 +34,12 @@ setup({
 const App = () => {
   return (
     <>
-      <Header />
-
-      <Outlet />
+      <div className={tw`flex flex-col w-full h-full`}>
+        <Header />
+        <div className={tw`flex-1 overflow-hidden`}>
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

@@ -1,8 +1,7 @@
 import { tw } from "twind";
 import { useNavigate } from "react-router-dom";
-import ArticleDetail from "./article-detail";
 
-const PersonalWorks = () => {
+const ExhibitionNews = () => {
   const list = [
     {
       title: "123",
@@ -365,4 +364,4 @@ const PersonalWorks = () => {
   );
 };
 
-export default PersonalWorks;
+export default ExhibitionNews;

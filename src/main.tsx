@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import "./index.css";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
 import Home from "./containers/home/index.tsx";
 import Content from "./containers/content/index.tsx";
 import PersonalWorks from "./containers/personal-works/index.tsx";
 import ArticleDetail from "./containers/personal-works/article-detail.tsx";
+import AuthorInfo from "./containers/author-info/index.tsx";
+import AssociationIntroduction from "./containers/association-introduction/index.tsx";
+
+import "./index.css";
+import ExhibitionNews from "./containers/exhibition-news/index.tsx";
+import StudioInfo from "./containers/studio-info/index.tsx";
 
 const router = createHashRouter([
   {
@@ -29,6 +33,22 @@ const router = createHashRouter([
       {
         path: "/detail/:id",
         element: <ArticleDetail />,
+      },
+      {
+        path: "/author",
+        element: <AuthorInfo />,
+      },
+      {
+        path: "/association-introduction",
+        element: <AssociationIntroduction />,
+      },
+      {
+        path: "/exhibition-news",
+        element: <ExhibitionNews />,
+      },
+      {
+        path: "/studio-info",
+        element: <StudioInfo />,
       },
     ],
   },

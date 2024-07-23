@@ -39,7 +39,7 @@ const Content = () => {
   return (
     <div
       // className={tw`flex flex-wrap flex-start items-center w-full h-full gap-[20px] px-[20px] pt-[100px]`}
-      className={tw`grid w-full h-full gap-[20px] px-[20px] pt-[100px] pb-[20px] overflow-scroll lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
+      className={tw`grid w-full h-full gap-[20px] px-[20px] pt-[20px] pb-[20px] overflow-scroll lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
     >
       {imgList.map((item) => (
         <div

@@ -1,16 +1,37 @@
-import { Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { tw } from "twind";
 
 const Header = () => {
   const Menus = [
     {
-      label: "个人画展",
+      label: "首页",
+      path: "/",
+    },
+    {
+      label: "艺术家简介",
+      path: "/author",
+    },
+    {
+      label: "绘画作品",
       path: "/personal",
     },
     {
-      label: "个人作品",
-      path: "/personal-works",
+      label: "纪录片作品",
+      path: "/",
+    },
+    {
+      label: "协会简介",
+      path: "/association-introduction",
+    },
+
+    {
+      label: "海怪工作室",
+      // path: "/personal-works",
+      path: "/studio-info",
+    },
+    {
+      label: "展讯",
+      path: "/exhibition-news",
     },
   ];
 
@@ -21,7 +42,7 @@ const Header = () => {
 
   return (
     <div
-      className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-100 fixed top-0 left-0 right-0 text-frc-300`}
+      className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-100 text-frc-300`}
     >
       <div
         onClick={() => {
