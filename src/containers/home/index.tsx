@@ -1,5 +1,5 @@
 import { tw } from "twind";
-import home from "@/assets/IMG_1927.png";
+import home from "@/assets/home.jpg";
 
 const Home = () => {
   return (
