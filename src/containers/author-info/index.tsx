@@ -75,30 +75,30 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw`flex flex-col justify-center items-center grid-rows-2 w-full h-full w-full text-frc-100 overflow-y-scroll
+      className={tw`mx-auto relative flex flex-col justify-center items-center grid-rows-2 w-[70%] min-w-[300px] h-full max-w-[600px] max-h-[740px] w-full text-frc-100 
         ${css`
-          .with-bg:before {
+          .with-bg:after {
             content: " ";
             display: block;
             position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
             height: 100%;
             opacity: 0.2;
             background-image: url("/src/assets/bg.png");
             background-repeat: no-repeat;
             background-position: 50% 0;
             background-size: cover;
-            border-radius: 10px;
+            // border-radius: 10px;
+            background-attachment: fixed;
           }
         `}
       `}
     >
       <div
-        className={tw`relative with-bg w-[90%] max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
+        className={tw`with-bg w-full h-100% overflow-y-scroll max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
       >
         <div className={tw`flex flex-col flex-start mb-[40px]`}>
           <strong>{InfoMap.name[locale]}</strong>
