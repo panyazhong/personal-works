@@ -52,7 +52,7 @@ const AssociationIntroduction = () => {
   return (
     <div className={tw`flex flex-col h-full items-center`}>
       <div
-        className={tw`w-[50%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-100`}
+        className={tw`w-[50%] min-w-[300px] flex flex-col mt-[10px] mb-[20px] text-frc-100`}
       >
         <p className={tw`text-lg font-bold`}>{InfoMap.title[locale]} </p>
         <div
