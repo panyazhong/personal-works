@@ -36,7 +36,7 @@ const StudioInfo = () => {
 
   const [locale] = useAtom(localeAtom);
   return (
-    <div className={tw`flex flex-col h-full items-center`}>
+    <div className={tw`flex flex-col h-full items-center overflow-y-scroll`}>
       <div
         className={tw`w-[50%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-100`}
       >

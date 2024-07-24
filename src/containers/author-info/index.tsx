@@ -75,7 +75,7 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw`flex flex-col justify-center items-center grid-rows-2 w-full h-full w-full text-frc-100
+      className={tw`flex flex-col justify-center items-center grid-rows-2 w-full h-full w-full text-frc-100 overflow-y-scroll
         ${css`
           .with-bg:before {
             content: " ";
@@ -98,7 +98,7 @@ const AuthorInfo = () => {
       `}
     >
       <div
-        className={tw`relative with-bg w-[540px] px-[50px] py-[20px] rounded-[10px]`}
+        className={tw`relative with-bg w-[90%] max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
       >
         <div className={tw`flex flex-col flex-start mb-[40px]`}>
           <strong>{InfoMap.name[locale]}</strong>

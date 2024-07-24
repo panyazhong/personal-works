@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./containers/header";
 import { Outlet } from "react-router-dom";
 import enUS from "antd/es/locale/en_US";
+import "./App.css";
 
 console.log(enUS);
 setup({
