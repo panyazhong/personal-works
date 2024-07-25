@@ -1,5 +1,6 @@
 import { tw } from "twind";
 import monstor from "@/assets/IMG_2914.png";
+import monstorCode from "@/assets/IMG_2923.png";
 import { useAtom } from "jotai";
 import { localeAtom } from "@/models/store";
 import { css } from "twind/css";
@@ -36,32 +37,51 @@ const StudioInfo = () => {
 
   const [locale] = useAtom(localeAtom);
   return (
-    <div className={tw`flex flex-col h-full items-center overflow-y-scroll`}>
+    <div
+      className={tw`grid grid-cols-1 w-full h-full overflow-y-scroll sm:flex sm:flex-row sm:gap-[100px]`}
+    >
       <div
-        className={tw`w-[50%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-100`}
+        className={tw`w-[90%] flex justify-center items-center mt-[30px] mx-auto sm:w-[50%] sm:justify-end`}
       >
-        <p className={tw`text-lg font-bold`}>{InfoMap.title[locale]}</p>
-        <div
-          className={tw`text-md mt-[20px]
+        <img
+          src={monstor}
+          className={tw`w-[80%] sm:w-[50%]`}
+          style={{
+            height: "auto",
+            borderRadius: "100%",
+          }}
+        />
+      </div>
+      <div
+        className={tw`w-[100%] flex items-center h-full items-center sm:w-[50%]`}
+      >
+        <div className={tw`w-[100%] flex flex-col items-center sm:items-start`}>
+          <div
+            className={tw`w-[70%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-100`}
+          >
+            <p className={tw`text-lg font-bold`}>{InfoMap.title[locale]}</p>
+            <div
+              className={tw`text-md mt-[20px]
             ${css`
               p {
                 margin: 10px 0;
               }
             `}
           `}
-          dangerouslySetInnerHTML={{
-            __html: InfoMap.context[locale],
-          }}
-        />
+              dangerouslySetInnerHTML={{
+                __html: InfoMap.context[locale],
+              }}
+            />
+          </div>
+          <img
+            src={monstorCode}
+            className={tw`w-[80%] sm:w-[50%]`}
+            style={{
+              height: "auto",
+            }}
+          />
+        </div>
       </div>
-
-      <img
-        src={monstor}
-        style={{
-          height: "50%",
-          width: "auto",
-        }}
-      />
     </div>
   );
 };

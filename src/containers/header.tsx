@@ -1,12 +1,13 @@
-import { Drawer, Select } from "antd";
+import { Drawer, Menu, MenuProps, Select } from "antd";
 import { useAtom } from "jotai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
 import { MenuOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { css } from "twind/css";
+import { ItemType } from "antd/es/menu/interface";
 
 const Header = () => {
   const Menus = [
@@ -28,19 +29,26 @@ const Header = () => {
     },
     {
       label: {
-        zh: "绘画作品",
-        en: "Paintings",
-        fr: "Peintures",
+        zh: "艺术作品",
       },
-      path: "/personal",
-    },
-    {
-      label: {
-        zh: "纪录片作品",
-        en: "Documentary Works",
-        fr: "Documentaires",
-      },
-      path: "/",
+      children: [
+        {
+          label: {
+            zh: "绘画作品",
+            en: "Paintings",
+            fr: "Peintures",
+          },
+          path: "/personal",
+        },
+        {
+          label: {
+            zh: "纪录片作品",
+            en: "Documentary Works",
+            fr: "Documentaires",
+          },
+          path: "/a",
+        },
+      ],
     },
     {
       label: {
@@ -98,7 +106,91 @@ const Header = () => {
   const [locale, setLocale] = useAtom(localeAtom);
   const [open, setOpen] = useState(false);
 
+  const items: MenuProps["items"] = useMemo(() => {
+    const res = Menus.map((menu) => {
+      if (!menu.children) {
+        return {
+          label: menu.label[locale],
+          key: menu.path,
+        };
+      }
+
+      return {
+        label: menu.label[locale],
+        key: menu.label[locale],
+        children: menu.children.map((child) => ({
+          label: child.label[locale],
+          key: child.path,
+        })),
+      };
+    }) as ItemType[];
+
+    return res;
+    return [
+      {
+        label: "....",
+        key: "mail",
+      },
+      {
+        label: "Navigation Two",
+        key: "app",
+      },
+      {
+        label: "Navigation Three - Submenu",
+        key: "SubMenu",
+        children: [
+          {
+            type: "group",
+            label: "Item 1",
+            children: [
+              {
+                label: "Option 1",
+                key: "setting:1",
+              },
+              {
+                label: "Option 2",
+                key: "setting:2",
+              },
+            ],
+          },
+          {
+            type: "group",
+            label: "Item 2",
+            children: [
+              {
+                label: "Option 3",
+                key: "setting:3",
+              },
+              {
+                label: "Option 4",
+                key: "setting:4",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: (
+          <a
+            href="https://ant.design"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Navigation Four - Link
+          </a>
+        ),
+        key: "alipay",
+      },
+    ];
+  }, [locale]);
+
   const onClose = () => {
+    setOpen(false);
+  };
+
+  const menuClick = (e) => {
+    console.log(e);
+    navigate(e.key);
     setOpen(false);
   };
   return (
@@ -117,7 +209,13 @@ const Header = () => {
         <div
           className={tw`flex gap-2 text-frc-100 font-bold text-base ml-[20px] hidden xl:flex`}
         >
-          {Menus.map((menu) => (
+          <Menu
+            mode="horizontal"
+            items={items}
+            onClick={menuClick}
+            // defaultOpenKeys={["艺术作品"]}
+          />
+          {/* {Menus.map((menu) => (
             <div
               className={tw`cursor-pointer hover:text-underline
               ${
@@ -132,7 +230,7 @@ const Header = () => {
             >
               {menu.label[locale]}
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 
@@ -151,7 +249,7 @@ const Header = () => {
 
       <Drawer
         title=""
-        placement="top"
+        placement="right"
         closable={false}
         onClose={onClose}
         open={open}
@@ -160,7 +258,13 @@ const Header = () => {
         className={tw`bg-frc-50 text-frc-100 ${css``}`}
       >
         <div className={tw`flex flex-col items-center`}>
-          {Menus.map((menu) => (
+          <Menu
+            mode="inline"
+            items={items}
+            onClick={menuClick}
+            // defaultOpenKeys={["艺术作品"]}
+          />
+          {/* {Menus.map((menu) => (
             <div
               className={tw`cursor-pointer h-[36px] hover:text-underline
               ${
@@ -171,12 +275,12 @@ const Header = () => {
             `}
               onClick={() => {
                 setOpen(false);
-                navigate(menu.path);
+                // navigate(menu.path);
               }}
             >
               {menu.label[locale]}
             </div>
-          ))}
+          ))} */}
         </div>
       </Drawer>
     </div>

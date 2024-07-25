@@ -41,3 +41,69 @@
 .read-the-docs {
   color: #888;
 }
+
+.ant-menu-light {
+  background: transparent;
+
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    color: #ffebc8;
+    border-bottom-color: #ffebc8 !important;
+  }
+  .ant-menu-item:hover {
+    color: #ffebc8 !important;
+  }
+  .ant-menu-item:active {
+    background-color: transparent !important;
+  }
+  .ant-menu-submenu:hover::after,
+  .ant-menu-item:hover::after,
+  .ant-menu-submenu-open::after,
+  .ant-menu-submenu-selected::after {
+    border-bottom-color: #ffebc8;
+  }
+  .ant-menu-submenu-title:active {
+    background-color: transparent !important;
+  }
+  .ant-menu-item-selected,
+  .ant-menu-submenu-selected {
+    color: #fcfcfb;
+    background-color: transparent;
+    .ant-menu-submenu-title {
+      color: #fcfcfb;
+      border-bottom-color: #fcfcfb !important;
+    }
+  }
+  .ant-menu-item-selected::after,
+  .ant-menu-submenu-selected:after {
+    border-bottom-color: #fcfcfb;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}

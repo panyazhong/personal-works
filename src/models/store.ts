@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const localeAtom = atom<"zh" | "en" | "fr">("fr");
+export const localeAtom = atom<"zh" | "en" | "fr">("zh");

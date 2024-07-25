@@ -3,6 +3,14 @@ import { useAtom } from "jotai";
 import { tw } from "twind";
 import { css } from "twind/css";
 import bg from "@/assets/bg.jpg";
+import { Carousel } from "antd";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 
 const AuthorInfo = () => {
   const InfoMap = {
@@ -72,7 +80,20 @@ const AuthorInfo = () => {
     },
   };
 
+  const contentStyle: React.CSSProperties = {
+    margin: 0,
+    height: "160px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    background: "#364d79",
+  };
+
   const [locale] = useAtom(localeAtom);
+
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
+  };
   return (
     <div
       //flex flex-col items-center justify-center
@@ -113,18 +134,76 @@ const AuthorInfo = () => {
           现工作生活于法国巴黎，继续创作个人作品，其作品广泛被私人藏 家收藏。
         </p> */}
       </div>
-      {/* <div className={tw`flex flex-col flex-start`}>
-        <strong>联系方式</strong>
-        <span>邮箱：nf@nanfang-art.com</span>
-        <span className={tw`flex`}>
-          电话：
-          <span>
-            0033-753750525（法国）
-            <br />
-            15066899551（微信 同号）
-          </span>
-        </span>
-      </div> */}
+
+      <div className={tw`w-[500px] h-[300px]`}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide>Slide 6</SwiperSlide>
+          <SwiperSlide>Slide 7</SwiperSlide>
+          <SwiperSlide>Slide 8</SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
+      </div>
+
+      {/* <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        loop={true}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+        </SwiperSlide>
+      </Swiper> */}
     </div>
   );
 };
