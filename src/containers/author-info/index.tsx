@@ -6,11 +6,13 @@ import bg from "@/assets/bg.jpg";
 import { Carousel } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+// import required modules
+import { EffectCoverflow, Pagination } from "swiper/modules";
 
 const AuthorInfo = () => {
   const InfoMap = {
@@ -135,27 +137,72 @@ const AuthorInfo = () => {
         </p> */}
       </div>
 
-      <div className={tw`w-[500px] h-[300px]`}>
+      <div
+        className={tw`
+        ${css`
+          .swiper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+
+          .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+          }
+
+          .swiper-slide img {
+            display: block;
+            width: 100%;
+          }
+        `}
+      `}
+      >
         <Swiper
-          slidesPerView={1}
-          spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
           }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          loop
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          </SwiperSlide>
         </Swiper>
       </div>
 
