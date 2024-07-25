@@ -60,14 +60,14 @@
   .ant-menu-item:hover::after,
   .ant-menu-submenu-open::after,
   .ant-menu-submenu-selected::after {
-    border-bottom-color: #ffebc8;
+    border-bottom-color: #ffebc8 !important;
   }
   .ant-menu-submenu-title:active {
     background-color: transparent !important;
   }
   .ant-menu-item-selected,
   .ant-menu-submenu-selected {
-    color: #fcfcfb;
+    color: #fcfcfb !important;
     background-color: transparent;
     .ant-menu-submenu-title {
       color: #fcfcfb;
@@ -76,7 +76,7 @@
   }
   .ant-menu-item-selected::after,
   .ant-menu-submenu-selected:after {
-    border-bottom-color: #fcfcfb;
+    border-bottom-color: #fcfcfb !important;
   }
 }
 
