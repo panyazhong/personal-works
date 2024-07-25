@@ -1,13 +1,23 @@
-import { Drawer, Menu, MenuProps, Select } from "antd";
+import { Button, Drawer, Menu, MenuProps, Select } from "antd";
 import { useAtom } from "jotai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
 import { MenuOutlined } from "@ant-design/icons";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { css } from "twind/css";
 import { ItemType } from "antd/es/menu/interface";
+
+import en from "@/assets/en.svg";
+import zh from "@/assets/zh.svg";
+import fr from "@/assets/fr.svg";
+
+const IconMap = {
+  en: en,
+  zh: zh,
+  fr: fr,
+};
 
 const Header = () => {
   const Menus = [
@@ -103,6 +113,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const currentRef = useRef<number>(0);
   const [locale, setLocale] = useAtom(localeAtom);
   const [open, setOpen] = useState(false);
 
@@ -197,17 +208,24 @@ const Header = () => {
     <div
       className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-50 text-frc-100`}
     >
-      <div className={tw`flex items-center`}>
+      <div className={tw`flex items-center w-full`}>
         <div
           onClick={() => {
             navigate("/");
           }}
-          className={tw`cursor-pointer`}
+          className={tw`cursor-pointer w-[50px]`}
         >
           <img src={logo} alt="" className={tw`w-[50px] rounded-full`} />
         </div>
         <div
-          className={tw`flex gap-2 text-frc-100 font-bold text-base ml-[20px] hidden xl:flex`}
+          className={tw`flex-1 w-full gap-2 text-frc-100 font-bold text-base ml-[20px] min-w-[1280px] hidden xl:flex
+            ${css`
+              .ant-menu {
+                width: 100%;
+                border-bottom: none;
+              }
+            `}
+          `}
         >
           <Menu
             mode="horizontal"
@@ -234,17 +252,51 @@ const Header = () => {
         </div>
       </div>
 
-      <div>
+      <div
+        className={tw`
+        ${css`
+          button:focus,
+          button:hover {
+            outline: none;
+            border: none;
+          }
+        `}
+      `}
+      >
         <MenuOutlined
           className={tw`xl:hidden mr-[20px] cursor-pointer`}
           onClick={() => setOpen(true)}
         />
-        <Select
+        <Button
+          type="text"
+          onClick={() => {
+            console.log(currentRef.current);
+            if (currentRef.current === 0) {
+              setLocale("en");
+            }
+
+            if (currentRef.current === 1) {
+              setLocale("fr");
+            }
+
+            if (currentRef.current === 2) {
+              setLocale("zh");
+            }
+            if (currentRef.current !== 2) {
+              currentRef.current = currentRef.current + 1;
+            } else {
+              currentRef.current = 0;
+            }
+          }}
+        >
+          <img className={tw`w-[24px]`} src={IconMap[locale]} />
+        </Button>
+        {/* <Select
           className={tw`w-[100px]`}
           options={options}
           value={locale}
           onChange={(v) => setLocale(v)}
-        />
+        /> */}
       </div>
 
       <Drawer
