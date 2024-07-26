@@ -1,6 +1,6 @@
-import { Button, Drawer, Menu, MenuProps, Select } from "antd";
+import { Button, Drawer, Menu, MenuProps } from "antd";
 import { useAtom } from "jotai";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
@@ -96,23 +96,23 @@ const Header = () => {
     },
   ];
 
-  const options = [
-    {
-      label: "中文",
-      value: "zh",
-    },
-    {
-      label: "English",
-      value: "en",
-    },
-    {
-      label: "Français",
-      value: "fr",
-    },
-  ];
+  // const options = [
+  //   {
+  //     label: "中文",
+  //     value: "zh",
+  //   },
+  //   {
+  //     label: "English",
+  //     value: "en",
+  //   },
+  //   {
+  //     label: "Français",
+  //     value: "fr",
+  //   },
+  // ];
 
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const currentRef = useRef<number>(0);
   const [locale, setLocale] = useAtom(localeAtom);
   const [open, setOpen] = useState(false);
