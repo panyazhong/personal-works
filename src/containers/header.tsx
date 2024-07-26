@@ -40,6 +40,8 @@ const Header = () => {
     {
       label: {
         zh: "艺术作品",
+        en: "Artistic Works",
+        fr: "Œuvres d’art",
       },
       children: [
         {
@@ -58,17 +60,49 @@ const Header = () => {
           },
           path: "/a",
         },
+        {
+          label: {
+            zh: "作品思想",
+            en: "Réflexions",
+            fr: "Thoughts",
+          },
+          path: "/a",
+        },
       ],
     },
     {
       label: {
-        zh: "协会简介",
-        en: "About the Union",
-        fr: "A propos de l’Union",
+        zh: "UAFC协会",
+        en: "UAFC Union",
+        fr: "Union UAFC",
       },
-      path: "/association-introduction",
+      children: [
+        {
+          label: {
+            zh: "简介",
+            en: "About the Union",
+            fr: "A propos de l’Union",
+          },
+          path: "/association-introduction",
+        },
+        {
+          label: {
+            zh: "艺术周边",
+            en: "Art Merchandise",
+            fr: "Produits dérivés",
+          },
+          path: "/a",
+        },
+        {
+          label: {
+            zh: "加入协会",
+            en: "Rejoindre l’Union",
+            fr: "Join the Union",
+          },
+          path: "/a",
+        },
+      ],
     },
-
     {
       label: {
         zh: "海怪工作室",
