@@ -13,6 +13,8 @@ import StudioInfo from "./containers/studio-info/index.tsx";
 
 import "./index.css";
 import ContractInfo from "./containers/contract-info/index.tsx";
+import ArtMerchandise from "./containers/art-merchandise/index.tsx";
+import JoinUnion from "./containers/join-union/index.tsx";
 
 const router = createHashRouter([
   {
@@ -54,6 +56,14 @@ const router = createHashRouter([
       {
         path: "/contract-info",
         element: <ContractInfo />,
+      },
+      {
+        path: "/art-merchandise",
+        element: <ArtMerchandise />,
+      },
+      {
+        path: "/join-union",
+        element: <JoinUnion />,
       },
     ],
   },
