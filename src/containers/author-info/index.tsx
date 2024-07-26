@@ -157,6 +157,9 @@ const AuthorInfo = () => {
             display: block;
             width: 100%;
           }
+          .swiper-pagination-bullet {
+            background-color: #ffebc8;
+          }
         `}
       `}
       >
@@ -175,6 +178,7 @@ const AuthorInfo = () => {
           pagination={true}
           modules={[EffectCoverflow, Pagination]}
           loop
+          className={tw`max-w-[900px]`}
         >
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-1.jpg" />

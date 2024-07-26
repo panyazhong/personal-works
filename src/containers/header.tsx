@@ -199,8 +199,7 @@ const Header = () => {
     setOpen(false);
   };
 
-  const menuClick = (e) => {
-    console.log(e);
+  const menuClick = (e: any) => {
     navigate(e.key);
     setOpen(false);
   };
@@ -253,12 +252,15 @@ const Header = () => {
       </div>
 
       <div
-        className={tw`
+        className={tw`flex
         ${css`
           button:focus,
           button:hover {
             outline: none;
             border: none;
+          }
+          button {
+            border: none !important;
           }
         `}
       `}
