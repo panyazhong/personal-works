@@ -88,10 +88,10 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw`mx-auto relative flex flex-col justify-center items-center grid-rows-2 w-[100%] min-w-[300px] h-full max-h-[740px] w-full text-frc-100 `}
+      className={tw`h-full mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] h-full w-full text-frc-100 `}
     >
       <div
-        className={tw`with-bg w-full h-100% overflow-y-scroll max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
+        className={tw`flex-1 w-full h-100% overflow-y-scroll max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
       >
         <div className={tw`flex flex-col flex-start mb-[40px]`}>
           <strong>{InfoMap.name[locale]}</strong>
@@ -128,6 +128,7 @@ const AuthorInfo = () => {
 
       <div
         className={tw`
+        h-[400px]
         ${css`
           .swiper {
             width: 100%;
