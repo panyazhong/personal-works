@@ -2,15 +2,19 @@ import { localeAtom } from "@/models/store";
 import { useAtom } from "jotai";
 import { tw } from "twind";
 import { css } from "twind/css";
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-coverflow";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import "./styles.css";
 
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 
 const AuthorInfo = () => {
   const InfoMap = {
@@ -88,10 +92,10 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw`h-full mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] h-full w-full text-frc-100 `}
+      className={tw` mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] w-full text-frc-100`}
     >
       <div
-        className={tw`flex-1 w-full h-100% overflow-y-scroll max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
+        className={tw`flex-1 w-full h-100%  max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
       >
         <div className={tw`flex flex-col flex-start mb-[40px]`}>
           <strong>{InfoMap.name[locale]}</strong>
@@ -127,48 +131,23 @@ const AuthorInfo = () => {
       </div>
 
       <div
-        className={tw`
-        h-[400px]
-        ${css`
-          .swiper {
-            width: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
-          }
-
-          .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: 300px;
-            height: 300px;
-          }
-
-          .swiper-slide img {
-            display: block;
-            width: 100%;
-          }
-          .swiper-pagination-bullet {
-            background-color: #ffebc8;
-          }
-        `}
-      `}
+        className={tw`w-[90%] h-[600px] text-[#000] relative w-full overflow-hidden`}
       >
         <Swiper
-          effect={"coverflow"}
-          grabCursor={true}
+          spaceBetween={30}
           centeredSlides={true}
-          slidesPerView={"auto"}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
           }}
-          pagination={true}
-          modules={[EffectCoverflow, Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          effect="fade"
+          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          className="mySwiper"
           loop
-          className={tw`max-w-[900px]`}
         >
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-1.jpg" />

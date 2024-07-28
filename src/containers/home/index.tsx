@@ -11,11 +11,11 @@ const Home = () => {
       <div
         className={tw`text-frc-100 flex flex-col items-end sm:w-[60%] w-[90%] w-full`}
       >
-        <div>旅法画家 - 南方</div>
-        <div>Artiste peintre - NAN Fang</div>
+        <div className={tw`text-[32px]`}>旅法画家 - 南方</div>
+        <div className={tw`text-[32px]`}>Artiste peintre - NAN Fang</div>
 
-        <div>UAFC中法艺术家协会会长</div>
-        <div>Union des Artistes Franco-Chinois</div>
+        <div className={tw`text-[30px]`}>UAFC中法艺术家协会会长</div>
+        <div className={tw`text-[30px]`}>Union des Artistes Franco-Chinois</div>
       </div>
     </div>
   );

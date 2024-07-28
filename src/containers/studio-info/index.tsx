@@ -1,6 +1,6 @@
 import { tw } from "twind";
-import monstor from "@/assets/IMG_2914.png";
-import monstorCode from "@/assets/IMG_2923.png";
+import monstor from "@/assets/0727_1.jpg";
+import monstorCode from "@/assets/0728_1.jpg";
 import { useAtom } from "jotai";
 import { localeAtom } from "@/models/store";
 import { css } from "twind/css";
@@ -38,7 +38,7 @@ const StudioInfo = () => {
   const [locale] = useAtom(localeAtom);
   return (
     <div
-      className={tw`grid grid-cols-1 w-full h-full overflow-y-scroll sm:flex sm:flex-row sm:gap-[100px]`}
+      className={tw`bg-frc-100 grid grid-cols-1 w-full h-full overflow-y-scroll sm:flex sm:flex-row sm:gap-[100px]`}
     >
       <div
         className={tw`w-[90%] flex justify-center items-center mt-[30px] mx-auto sm:w-[50%] sm:justify-end`}
@@ -48,7 +48,6 @@ const StudioInfo = () => {
           className={tw`w-[80%] sm:w-[50%]`}
           style={{
             height: "auto",
-            borderRadius: "100%",
           }}
         />
       </div>
@@ -57,7 +56,7 @@ const StudioInfo = () => {
       >
         <div className={tw`w-[100%] flex flex-col items-center sm:items-start`}>
           <div
-            className={tw`w-[70%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-100`}
+            className={tw`w-[70%] min-w-[300px] flex flex-col mt-[100px] mb-[20px] text-frc-50`}
           >
             <p className={tw`text-lg font-bold`}>{InfoMap.title[locale]}</p>
             <div

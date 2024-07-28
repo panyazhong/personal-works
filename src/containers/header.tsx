@@ -1,11 +1,11 @@
 import { Button, Drawer, Menu, MenuProps } from "antd";
 import { useAtom } from "jotai";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
 import { MenuOutlined } from "@ant-design/icons";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { css } from "twind/css";
 import { ItemType } from "antd/es/menu/interface";
 
@@ -150,7 +150,9 @@ const Header = () => {
   const currentRef = useRef<number>(0);
   const [locale, setLocale] = useAtom(localeAtom);
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
 
+  console.log(pathname);
   const items: MenuProps["items"] = useMemo(() => {
     const res = Menus.map((menu) => {
       if (!menu.children) {
@@ -237,9 +239,25 @@ const Header = () => {
     navigate(e.key);
     setOpen(false);
   };
+
+  const color = useMemo(() => {
+    if (pathname === "/studio-info") {
+      return {
+        normal: "#fff",
+        active: "#191B1C",
+      };
+    }
+    return {
+      normal: "#191B1C",
+      active: "#fff",
+    };
+  }, [pathname]);
+
   return (
     <div
-      className={tw`flex h-[72px] justify-between items-center text-sm px-2 bg-frc-50 text-frc-100`}
+      className={tw`flex h-[72px] justify-between items-center text-sm px-2 ${
+        pathname === "/studio-info" ? "text-frc-50" : "text-frc-100"
+      } ${pathname === "/studio-info" ? "ant-studio" : ""}`}
     >
       <div className={tw`flex items-center w-full`}>
         <div
@@ -251,7 +269,7 @@ const Header = () => {
           <img src={logo} alt="" className={tw`w-[50px] rounded-full`} />
         </div>
         <div
-          className={tw`flex-1 w-full gap-2 text-frc-100 font-bold text-base ml-[20px] min-w-[1280px] hidden xl:flex
+          className={tw`flex-1 w-full gap-2 text-frc-100 font-bold text-base ml-[20px] min-w-[1080px] hidden xl:flex
             ${css`
               .ant-menu {
                 width: 100%;
@@ -303,7 +321,54 @@ const Header = () => {
           className={tw`xl:hidden mr-[20px] cursor-pointer`}
           onClick={() => setOpen(true)}
         />
-        <Button
+
+        <div
+          className={tw`cursor-pointer w-[120px] flex gap-2`}
+          onClick={() => {
+            console.log(currentRef.current);
+            if (currentRef.current === 0) {
+              setLocale("en");
+            }
+
+            if (currentRef.current === 1) {
+              setLocale("fr");
+            }
+
+            if (currentRef.current === 2) {
+              setLocale("zh");
+            }
+            if (currentRef.current !== 2) {
+              currentRef.current = currentRef.current + 1;
+            } else {
+              currentRef.current = 0;
+            }
+          }}
+        >
+          <span
+            className={tw`px-1 border rounded-[4px] border-[${
+              color[locale === "zh" ? "active" : "normal"]
+            }]`}
+          >
+            中
+          </span>
+          /
+          <span
+            className={tw`px-1 border rounded-[4px] border-[${
+              color[locale === "en" ? "active" : "normal"]
+            }]`}
+          >
+            EN
+          </span>
+          /
+          <span
+            className={tw`px-1 border rounded-[4px] border-[${
+              color[locale === "fr" ? "active" : "normal"]
+            }]`}
+          >
+            FR
+          </span>
+        </div>
+        {/* <Button
           type="text"
           onClick={() => {
             console.log(currentRef.current);
@@ -326,7 +391,7 @@ const Header = () => {
           }}
         >
           <img className={tw`w-[24px]`} src={IconMap[locale]} />
-        </Button>
+        </Button> */}
         {/* <Select
           className={tw`w-[100px]`}
           options={options}

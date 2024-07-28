@@ -8,17 +8,17 @@ const { Dragger } = Upload;
 
 const JoinUnion = () => {
   return (
-    <div className={tw`w-full h-full flex justify-center items-center`}>
+    <div className={tw`w-full flex justify-center items-center`}>
       <div className={tw`w-[80%] max-w-[500px]`}>
         <Form
           layout="vertical"
           className={tw`
             ${css`
               .ant-form-item .ant-form-item-label > label {
-                color: #ffebc8 !important;
+                color: #fff !important;
               }
               .anticon {
-                color: #ffebc8 !important;
+                color: #fff !important;
               }
             `}
           `}

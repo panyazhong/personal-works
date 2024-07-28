@@ -1,7 +1,7 @@
 import { setup, tw } from "twind";
 import "./App.css";
 import Header from "./containers/header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import enUS from "antd/es/locale/en_US";
 import "./App.css";
 
@@ -23,7 +23,7 @@ setup({
     colors: {
       frc: {
         50: "#191B1C",
-        100: "#ffebc8",
+        100: "#fff",
         200: "#fcfcfb",
         300: "#383838",
         400: "#35393B",
@@ -37,11 +37,16 @@ setup({
 });
 
 const App = () => {
+  const { pathname } = useLocation();
   return (
     <>
-      <div className={tw`flex flex-col w-full h-full bg-frc-50`}>
+      <div
+        className={tw`flex flex-col w-full h-full bg-frc-50
+        ${pathname === "/studio-info" ? "bg-frc-100" : "bg-frc-50"}
+      `}
+      >
         <Header />
-        <div className={tw`flex-1 overflow-hidden`}>
+        <div className={tw`flex-1 overflow-y-scroll py-[50px]`}>
           <Outlet />
         </div>
       </div>
