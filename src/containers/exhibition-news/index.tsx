@@ -332,11 +332,13 @@ const ExhibitionNews = () => {
   const navigate = useNavigate();
   return (
     <div
-      className={tw`place-items-center grid grid-cols-1 gap-[20px] w-full h-full pt-[20px] py-[20px] px-4 overflow-y-scroll md:grid-cols-2`}
+      className={tw`grid grid-cols-1 gap-[20px] w-full h-full pt-[20px] py-[20px] px-4 overflow-y-scroll md:grid-cols-2`}
     >
-      {list.map((item) => (
+      {list.map((item, index) => (
         <div
-          className={tw`w-full flex flex-col flex-start h-[300px] p-[20px] text-sm bg-frc-200 max-w-[800px] rounded-[5px]`}
+          className={tw`${
+            index % 2 === 0 ? "place-self-end" : ""
+          } w-full flex flex-col flex-start h-[300px] p-[20px] text-sm bg-frc-200 max-w-[800px] rounded-[5px]`}
         >
           <div className={tw`text-lg font-bold`}>{item.title}</div>
           <div

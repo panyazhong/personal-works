@@ -74,7 +74,7 @@ const Thoughts = () => {
                   }}
                 ></div>
                 <div
-                  className={tw`w-full flex justify-between items-center text-frc-100`}
+                  className={tw`w-full flex justify-between items-center text-[#8d8d8d]`}
                 >
                   <span
                     className={tw`cursor-pointer hover:text-underline hover:text-frc-300`}
