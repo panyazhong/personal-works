@@ -10,7 +10,7 @@ const queryArticleList = () => {
       return res.data;
     });
 };
-const queryArticleDetail = (data: { groupId: number }) => {
+const queryArticleDetail = (data: { groupId: string }) => {
   return axios
     .request({
       url: "/back/article/queryArticleDetail",

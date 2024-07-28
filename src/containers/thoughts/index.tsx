@@ -10,7 +10,7 @@ import dayjs from "dayjs";
 import { Spin } from "antd";
 
 const Thoughts = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any[]>([]);
 
   const navigate = useNavigate();
 

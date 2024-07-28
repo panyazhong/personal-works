@@ -9,7 +9,7 @@ import { tw } from "twind";
 import { css } from "twind/css";
 
 const ArticleDetail = () => {
-  const [context, setContext] = useState({});
+  const [context, setContext] = useState<any>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const scroll = useScroll(scrollRef);
   const navigate = useNavigate();

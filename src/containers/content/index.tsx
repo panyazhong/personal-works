@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { tw } from "twind";
 
 const Content = () => {
-  const [imgList, setImgList] = useState([]);
+  const [imgList, setImgList] = useState<any[]>([]);
   const [locale] = useAtom(localeAtom);
 
-  const { runAsync, loading } = useRequest(queryPaintList, {
+  const { runAsync } = useRequest(queryPaintList, {
     manual: true,
     onSuccess: (res) => {
       setImgList(res.data);
