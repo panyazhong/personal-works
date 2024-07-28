@@ -11,4 +11,12 @@ export default defineConfig({
       assets: path.resolve(__dirname, "./src/assets"),
     },
   },
+  server: {
+    proxy: {
+      "/back": {
+        target: "http://www.nanfang-art.com",
+        changeOrigin: true,
+      },
+    },
+  },
 });

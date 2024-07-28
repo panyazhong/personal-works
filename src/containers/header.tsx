@@ -1,23 +1,23 @@
-import { Button, Drawer, Menu, MenuProps } from "antd";
+import { Drawer, Menu, MenuProps } from "antd";
 import { useAtom } from "jotai";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
 import { MenuOutlined } from "@ant-design/icons";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { css } from "twind/css";
 import { ItemType } from "antd/es/menu/interface";
 
-import en from "@/assets/en.svg";
-import zh from "@/assets/zh.svg";
-import fr from "@/assets/fr.svg";
+// import en from "@/assets/en.svg";
+// import zh from "@/assets/zh.svg";
+// import fr from "@/assets/fr.svg";
 
-const IconMap = {
-  en: en,
-  zh: zh,
-  fr: fr,
-};
+// const IconMap = {
+//   en: en,
+//   zh: zh,
+//   fr: fr,
+// };
 
 const Header = () => {
   const Menus = [
@@ -50,7 +50,7 @@ const Header = () => {
             en: "Paintings",
             fr: "Peintures",
           },
-          path: "/personal",
+          path: "/paintings",
         },
         {
           label: {
@@ -66,7 +66,7 @@ const Header = () => {
             en: "Réflexions",
             fr: "Thoughts",
           },
-          path: "/a",
+          path: "/thoughts",
         },
       ],
     },
