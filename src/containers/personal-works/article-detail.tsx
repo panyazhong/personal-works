@@ -1,6 +1,6 @@
 import { queryArticleDetail } from "@/api";
 import { localeAtom } from "@/models/store";
-import { useRequest, useScroll } from "ahooks";
+import { useDebounceEffect, useRequest, useScroll } from "ahooks";
 import { Spin } from "antd";
 import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
@@ -35,7 +35,7 @@ const ArticleDetail = () => {
     },
   });
 
-  useEffect(() => {
+  useDebounceEffect(() => {
     const groupId = location.pathname.split("/").reverse()[0];
 
     runAsync({ groupId });

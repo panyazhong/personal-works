@@ -1,13 +1,15 @@
-import { queryPaintList } from "@/api";
+import { queryPaintDetail, queryPaintList } from "@/api";
 import { localeAtom } from "@/models/store";
 import { useRequest } from "ahooks";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { tw } from "twind";
 
 const Content = () => {
   const [imgList, setImgList] = useState<any[]>([]);
   const [locale] = useAtom(localeAtom);
+  const navigate = useNavigate();
 
   const { runAsync } = useRequest(queryPaintList, {
     manual: true,
@@ -15,6 +17,16 @@ const Content = () => {
       setImgList(res.data);
     },
   });
+
+  const handleClick = async (id: string) => {
+    const res = await queryPaintDetail({ groupId: id });
+
+    const { groupId } = res.data[locale];
+
+    if (groupId) {
+      navigate(`/detail/${groupId}`);
+    }
+  };
 
   useEffect(() => {
     runAsync();
@@ -30,7 +42,13 @@ const Content = () => {
           className={tw`border border-frc-400 flex flex-col justify-center items-center rounded-[10px] shadow-1lv`}
         >
           <div className={tw`flex-1 flex items-center rounded-[10px] p-2`}>
-            <img className={tw`rounded-[4px]`} src={item[locale].imgPath} />{" "}
+            <img
+              className={tw`rounded-[4px]`}
+              src={item[locale].imgPath}
+              onClick={() => {
+                handleClick(item[locale].groupId);
+              }}
+            />{" "}
           </div>
           <div
             className={tw`h-[48px] w-full border-t-1 border-t-frc-400 text-frc-100 flex items-center px-2`}

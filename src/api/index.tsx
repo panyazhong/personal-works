@@ -32,5 +32,21 @@ const queryPaintList = () => {
       return res.data;
     });
 };
+const queryPaintDetail = (data: { groupId: string }) => {
+  return axios
+    .request({
+      url: "/back/paint/queryPaintDetail",
+      method: "post",
+      data,
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
 
-export { queryArticleList, queryArticleDetail, queryPaintList };
+export {
+  queryArticleList,
+  queryArticleDetail,
+  queryPaintList,
+  queryPaintDetail,
+};
