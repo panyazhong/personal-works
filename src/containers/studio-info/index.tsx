@@ -45,7 +45,7 @@ const StudioInfo = () => {
       >
         <img
           src={monstor}
-          className={tw`w-[80%] sm:w-[50%]`}
+          className={tw`w-[80%] sm:w-[70%]`}
           style={{
             height: "auto",
           }}

@@ -3,7 +3,7 @@ import { localeAtom } from "@/models/store";
 import { useDebounceEffect, useRequest, useScroll } from "ahooks";
 import { Spin } from "antd";
 import { useAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tw } from "twind";
 import { css } from "twind/css";

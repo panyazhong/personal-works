@@ -318,52 +318,40 @@ const Header = () => {
       `}
       >
         <MenuOutlined
-          className={tw`xl:hidden mr-[20px] cursor-pointer`}
+          className={tw`xl:hidden mr-[20px]`}
           onClick={() => setOpen(true)}
         />
 
-        <div
-          className={tw`cursor-pointer w-[120px] flex gap-2`}
-          onClick={() => {
-            console.log(currentRef.current);
-            if (currentRef.current === 0) {
-              setLocale("en");
-            }
-
-            if (currentRef.current === 1) {
-              setLocale("fr");
-            }
-
-            if (currentRef.current === 2) {
-              setLocale("zh");
-            }
-            if (currentRef.current !== 2) {
-              currentRef.current = currentRef.current + 1;
-            } else {
-              currentRef.current = 0;
-            }
-          }}
-        >
+        <div className={tw`cursor-pointer w-[120px] flex gap-2`}>
           <span
-            className={tw`px-1 border rounded-[4px] border-[${
+            className={tw`px-1 border rounded-[4px] cursor-pointer border-[${
               color[locale === "zh" ? "active" : "normal"]
             }]`}
+            onClick={() => {
+              setLocale("zh");
+            }}
           >
             中
           </span>
           /
           <span
-            className={tw`px-1 border rounded-[4px] border-[${
+            className={tw`px-1 border rounded-[4px] cursor-pointer border-[${
               color[locale === "en" ? "active" : "normal"]
             }]`}
+            onClick={() => {
+              setLocale("en");
+            }}
           >
             EN
           </span>
           /
           <span
-            className={tw`px-1 border rounded-[4px] border-[${
+            className={tw`px-1 border rounded-[4px] cursor-pointer border-[${
               color[locale === "fr" ? "active" : "normal"]
             }]`}
+            onClick={() => {
+              setLocale("fr");
+            }}
           >
             FR
           </span>

@@ -30,7 +30,7 @@ const AssociationIntroduction = () => {
             France and China united together strive to promote art, to establish
             and further activities of artistic and cultural exchanges between their
             two countries.</p>`,
-      fr: `<p>UNION DES ARTISTES FRANCO-CHINOIS (UAFC)/p>
+      fr: `<p>UNION DES ARTISTES FRANCO-CHINOIS (UAFC)</p>
             <p>En juin 2017, l’enregistrement de l’Union des Artistes Franco-Chinois
             (UAFC) a été approuvé par les autorités de Paris, et son
             établissement a été déclaré officiellement au Journal officiel de la
@@ -50,9 +50,11 @@ const AssociationIntroduction = () => {
   const [locale] = useAtom(localeAtom);
 
   return (
-    <div className={tw`flex flex-col h-full items-center overflow-y-scroll`}>
+    <div
+      className={tw`flex flex-col h-full items-center overflow-y-scroll sm:flex-row sm:justify-center sm:gap-[20px]`}
+    >
       <div
-        className={tw`w-[50%] min-w-[300px] flex flex-col mt-[10px] mb-[20px] text-frc-100`}
+        className={tw`w-[50%] min-w-[300px] max-w-[500px] flex flex-col mt-[10px] mb-[20px] text-frc-100`}
       >
         <p className={tw`text-lg font-bold`}>{InfoMap.title[locale]} </p>
         <div

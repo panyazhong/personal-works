@@ -120,7 +120,7 @@ const AuthorInfo = () => {
         <div
           className={tw`flex flex-col flex-start mb-[40px]`}
           dangerouslySetInnerHTML={{
-            __html: InfoMap.experience[locale],
+            __html: InfoMap.own[locale],
           }}
         />
 
