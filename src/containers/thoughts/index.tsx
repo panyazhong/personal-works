@@ -39,9 +39,9 @@ const Thoughts = () => {
       ) : (
         (list || []).map((item) => (
           <div
-            className={tw`w-[1100px] flex flex-row gap-[50px] h-[300px] p-[20px] text-sm bg-frc-50 border border-0 border-b-[1px] border-b-[#efefef]`}
+            className={tw`max-w-[1100px] flex flex-col gap-[50px] p-[20px] text-sm bg-frc-50 border border-0 border-b-[1px] border-b-[#efefef] sm:h-[300px] sm:flex-row`}
           >
-            <div className={tw`w-[250px] h-[250px]`}>
+            <div className={tw`w-[250px] sm:h-[250px]`}>
               <img
                 src="https://upload.jianshu.io/admin_banners/web_images/5093/55c24be237c81439b15a72983b4d8554dd84794b.png?imageMogr2/quality/50"
                 alt=""

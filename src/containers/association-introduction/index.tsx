@@ -51,7 +51,7 @@ const AssociationIntroduction = () => {
 
   return (
     <div
-      className={tw`flex flex-col h-full items-center overflow-y-scroll sm:flex-row sm:justify-center sm:gap-[20px]`}
+      className={tw`flex flex-col h-full items-center overflow-y-scroll sm:flex-row-reverse sm:justify-center sm:gap-[20px]`}
     >
       <div
         className={tw`w-[50%] min-w-[300px] max-w-[500px] flex flex-col mt-[10px] mb-[20px] text-frc-100`}

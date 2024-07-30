@@ -52,14 +52,14 @@ const Header = () => {
           },
           path: "/paintings",
         },
-        {
-          label: {
-            zh: "纪录片作品",
-            en: "Documentary Works",
-            fr: "Documentaires",
-          },
-          path: "/a",
-        },
+        // {
+        //   label: {
+        //     zh: "纪录片作品",
+        //     en: "Documentary Works",
+        //     fr: "Documentaires",
+        //   },
+        //   path: "/a",
+        // },
         {
           label: {
             zh: "作品思想",
@@ -93,14 +93,14 @@ const Header = () => {
           },
           path: "/art-merchandise",
         },
-        {
-          label: {
-            zh: "加入协会",
-            en: "Join the Union",
-            fr: "Rejoindre l’Union",
-          },
-          path: "/join-union",
-        },
+        // {
+        //   label: {
+        //     zh: "加入协会",
+        //     en: "Join the Union",
+        //     fr: "Rejoindre l’Union",
+        //   },
+        //   path: "/join-union",
+        // },
       ],
     },
     {
@@ -322,7 +322,7 @@ const Header = () => {
           onClick={() => setOpen(true)}
         />
 
-        <div className={tw`cursor-pointer w-[120px] flex gap-2`}>
+        <div className={tw`w-[120px] flex gap-2`}>
           <span
             className={tw`px-1 border rounded-[4px] cursor-pointer border-[${
               color[locale === "zh" ? "active" : "normal"]

@@ -1,5 +1,6 @@
 import { tw } from "twind";
 import { useNavigate } from "react-router-dom";
+import { css } from "twind/css";
 
 const ExhibitionNews = () => {
   const list = [
@@ -335,30 +336,80 @@ const ExhibitionNews = () => {
       className={tw`grid grid-cols-1 gap-[20px] w-full h-full pt-[20px] py-[20px] px-4 overflow-y-scroll md:grid-cols-2`}
     >
       {list.map((item, index) => (
+        // <div
+        //   className={tw`${
+        //     index % 2 === 0 ? "place-self-end" : ""
+        //   } w-full flex flex-col flex-start h-[300px] p-[20px] text-sm bg-frc-200 max-w-[800px] rounded-[5px]`}
+        // >
+        //   <div className={tw`text-lg font-bold`}>{item.title}</div>
+        //   <div
+        //     className={tw`text-sm text-frc-600 truncate cursor-pointer hover:text-frc-300`}
+        //     onClick={() => {
+        //       navigate("/detail/1");
+        //     }}
+        //   >
+        //     {item.desc}
+        //   </div>
+        //   <div className={tw`w-full flex justify-between items-center`}>
+        //     <span>{item.publishDate}</span>
+        //     <span
+        //       className={tw`cursor-pointer hover:text-underline hover:text-frc-300`}
+        //       onClick={() => {
+        //         navigate("/author");
+        //       }}
+        //     >
+        //       {item.author}
+        //     </span>
+        //   </div>
+        // </div>
         <div
-          className={tw`${
-            index % 2 === 0 ? "place-self-end" : ""
-          } w-full flex flex-col flex-start h-[300px] p-[20px] text-sm bg-frc-200 max-w-[800px] rounded-[5px]`}
+          className={tw`max-w-[800px] flex flex-col gap-[50px] p-[20px] text-sm bg-frc-50 border border-0 border-b-[1px] border-b-[#efefef] sm:h-[300px] sm:flex-row`}
         >
-          <div className={tw`text-lg font-bold`}>{item.title}</div>
-          <div
-            className={tw`text-sm text-frc-600 truncate cursor-pointer hover:text-frc-300`}
-            onClick={() => {
-              navigate("/detail/1");
-            }}
-          >
-            {item.desc}
+          <div className={tw`w-[250px] sm:h-[250px]`}>
+            <img
+              src="https://upload.jianshu.io/admin_banners/web_images/5093/55c24be237c81439b15a72983b4d8554dd84794b.png?imageMogr2/quality/50"
+              alt=""
+            />
           </div>
-          <div className={tw`w-full flex justify-between items-center`}>
-            <span>{item.publishDate}</span>
-            <span
-              className={tw`cursor-pointer hover:text-underline hover:text-frc-300`}
-              onClick={() => {
-                navigate("/author");
-              }}
+          <div className={tw`flex-1 flex flex-col`}>
+            <div className={tw`text-lg font-bold h-[36px] text-frc-100`}>
+              {"--"}
+            </div>
+            <div
+              className={tw`w-full flex-1 flex flex-col justify-between
+              ${css`
+                .overell {
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 5;
+                }
+              `}
+            `}
             >
-              {item.author}
-            </span>
+              <div
+                className={tw`text-sm text-frc-100 cursor-pointer overell`}
+                onClick={() => {
+                  navigate(`/detail/${item.groupId}`);
+                }}
+              >
+                展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容
+              </div>
+              <div
+                className={tw`w-full flex justify-between items-center text-[#8d8d8d]`}
+              >
+                <span
+                  className={tw`cursor-pointer hover:text-underline hover:text-frc-300`}
+                  onClick={() => {
+                    navigate("/author");
+                  }}
+                >
+                  {"--"}
+                </span>
+                <span>{"--"}</span>
+              </div>
+            </div>
           </div>
         </div>
       ))}
