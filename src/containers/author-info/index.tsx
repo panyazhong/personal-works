@@ -10,11 +10,35 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import {
+  author1,
+  author2,
+  author3,
+  author4,
+  author5,
+  author6,
+  author7,
+  author8,
+  author9,
+} from "./assets";
 
 import "./styles.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import { css } from "twind/css";
+
+const imgs = [
+  author1,
+  author2,
+  author3,
+  author4,
+  author5,
+  author6,
+  author7,
+  author8,
+  author9,
+];
 
 const AuthorInfo = () => {
   const InfoMap = {
@@ -92,8 +116,34 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw` mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] w-full text-frc-100`}
+      className={tw`mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] w-full text-frc-100`}
     >
+      <div
+        className={tw`w-[90%] max-w-[900px] h-[300px] text-[#000] relative w-full overflow-hidden sm:h-[600px]`}
+      >
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          effect="fade"
+          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          className="mySwiper"
+          loop
+        >
+          {Array.from({ length: 9 }).map((_, index) => (
+            <SwiperSlide>
+              <img src={imgs[index]} className={tw`h-full w-auto`} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <div
         className={tw`flex-1 w-full h-100%  max-w-[540px] px-[50px] py-[20px] rounded-[10px]`}
       >
@@ -128,55 +178,6 @@ const AuthorInfo = () => {
         {/* <p>
           现工作生活于法国巴黎，继续创作个人作品，其作品广泛被私人藏 家收藏。
         </p> */}
-      </div>
-
-      <div
-        className={tw`w-[90%] h-[600px] text-[#000] relative w-full overflow-hidden`}
-      >
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          effect="fade"
-          modules={[Autoplay, Pagination, Navigation, EffectFade]}
-          className="mySwiper"
-          loop
-        >
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-          </SwiperSlide>
-        </Swiper>
       </div>
 
       {/* <Swiper

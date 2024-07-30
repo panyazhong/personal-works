@@ -46,7 +46,7 @@ const App = () => {
       `}
       >
         <Header />
-        <div className={tw`flex-1 overflow-y-scroll py-[50px]`}>
+        <div className={tw`flex-1 overflow-y-scroll py-[20px]`}>
           <Outlet />
         </div>
       </div>
