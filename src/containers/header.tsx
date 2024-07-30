@@ -5,7 +5,7 @@ import { tw } from "twind";
 import { localeAtom } from "../models/store";
 import logo from "@/assets/logo.jpg";
 import { MenuOutlined } from "@ant-design/icons";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { css } from "twind/css";
 import { ItemType } from "antd/es/menu/interface";
 
@@ -147,7 +147,6 @@ const Header = () => {
 
   const navigate = useNavigate();
   // const location = useLocation();
-  const currentRef = useRef<number>(0);
   const [locale, setLocale] = useAtom(localeAtom);
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();

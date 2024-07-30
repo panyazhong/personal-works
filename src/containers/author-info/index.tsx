@@ -26,7 +26,6 @@ import "./styles.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
-import { css } from "twind/css";
 
 const imgs = [
   author1,

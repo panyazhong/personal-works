@@ -335,7 +335,7 @@ const ExhibitionNews = () => {
     <div
       className={tw`grid grid-cols-1 gap-[20px] w-full h-full pt-[20px] py-[20px] px-4 overflow-y-scroll md:grid-cols-2`}
     >
-      {list.map((item, index) => (
+      {list.map((item) => (
         // <div
         //   className={tw`${
         //     index % 2 === 0 ? "place-self-end" : ""
@@ -391,7 +391,7 @@ const ExhibitionNews = () => {
               <div
                 className={tw`text-sm text-frc-100 cursor-pointer overell`}
                 onClick={() => {
-                  navigate(`/detail/${item.groupId}`);
+                  navigate(`/detail/${(item as any).groupId}`);
                 }}
               >
                 展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容展讯内容

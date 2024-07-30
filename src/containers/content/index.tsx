@@ -1,7 +1,7 @@
 import { queryPaintDetail, queryPaintList } from "@/api";
 import { localeAtom } from "@/models/store";
 import { useRequest } from "ahooks";
-import { Image, Modal } from "antd";
+import { Modal } from "antd";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
