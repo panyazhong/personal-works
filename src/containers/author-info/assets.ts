@@ -1,6 +1,6 @@
 import author1 from "@/assets/author/author1.jpg";
 import author2 from "@/assets/author/author2.jpg";
-import author3 from "@/assets/author/author4.jpg";
+import author3 from "@/assets/author/author3.jpg";
 import author4 from "@/assets/author/author4.jpg";
 import author5 from "@/assets/author/author5.jpg";
 import author6 from "@/assets/author/author6.jpg";
