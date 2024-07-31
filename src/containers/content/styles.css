@@ -1,0 +1,10 @@
+
+@media screen and (max-width: 640px) {
+  /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

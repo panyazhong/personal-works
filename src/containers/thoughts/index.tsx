@@ -42,10 +42,7 @@ const Thoughts = () => {
             className={tw`max-w-[1100px] flex flex-col gap-[50px] p-[20px] text-sm bg-frc-50 border border-0 border-b-[1px] border-b-[#efefef] sm:h-[300px] sm:flex-row`}
           >
             <div className={tw`w-[250px] sm:h-[250px]`}>
-              <img
-                src="https://upload.jianshu.io/admin_banners/web_images/5093/55c24be237c81439b15a72983b4d8554dd84794b.png?imageMogr2/quality/50"
-                alt=""
-              />
+              <img src={item && item[locale]?.imgPath} alt="" />
             </div>
             <div className={tw`flex-1 flex flex-col`}>
               <div className={tw`text-lg font-bold h-[36px] text-frc-100`}>
@@ -70,7 +67,7 @@ const Thoughts = () => {
                     navigate(`/detail/${item.groupId}`);
                   }}
                   dangerouslySetInnerHTML={{
-                    __html: (item && item[locale]?.content) || "--",
+                    __html: (item && item[locale]?.summary) || "--",
                   }}
                 ></div>
                 <div
