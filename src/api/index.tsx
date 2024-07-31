@@ -44,9 +44,33 @@ const queryPaintDetail = (data: { groupId: string }) => {
     });
 };
 
+const queryExhibitionList = () => {
+  return axios
+    .request({
+      url: "/back/exhibition/queryExhibitionList",
+      method: "post",
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+const queryExhibitionDetail = (data: { groupId: string }) => {
+  return axios
+    .request({
+      url: "/back/exhibition/queryExhibitionDetail",
+      method: "post",
+      data,
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+
 export {
   queryArticleList,
   queryArticleDetail,
   queryPaintList,
   queryPaintDetail,
+  queryExhibitionList,
+  queryExhibitionDetail,
 };

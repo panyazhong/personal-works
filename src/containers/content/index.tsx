@@ -173,9 +173,12 @@ const Content = () => {
               {/* {Array.from({ length: 9 }).map((_, index) => ( */}
               {imgList
                 .filter((i) => i.topPosition === position)
-                .map((_, index) => (
+                .map((item, index) => (
                   <SwiperSlide>
-                    <img src={imgs[index]} className={tw`h-full w-auto`} />
+                    <img
+                      src={item[locale].imgPath}
+                      className={tw`h-full w-auto`}
+                    />
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -222,6 +225,7 @@ const Content = () => {
           onCancel={() => {
             setOpen(false);
           }}
+          centered
           className={tw`
           bg-inherit
           ${css`
@@ -244,7 +248,11 @@ const Content = () => {
         >
           <img
             className={tw`rounded-[4px] w-full`}
-            src={currentImg[locale]?.imgPath}
+            height={"90%"}
+            style={{
+              minWidth: "400px",
+            }}
+            src={`http://www.nanfang-art.com/${currentImg[locale]?.imgPath}`}
             // src={
             //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
             // }

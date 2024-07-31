@@ -16,6 +16,7 @@ import ContractInfo from "./containers/contract-info/index.tsx";
 import ArtMerchandise from "./containers/art-merchandise/index.tsx";
 import JoinUnion from "./containers/join-union/index.tsx";
 import Thoughts from "./containers/thoughts/index.tsx";
+import NewsDetail from "./containers/exhibition-news-detail/index.tsx";
 
 const router = createHashRouter([
   {
@@ -49,6 +50,10 @@ const router = createHashRouter([
       {
         path: "/exhibition-news",
         element: <ExhibitionNews />,
+      },
+      {
+        path: "/news-detail/:id",
+        element: <NewsDetail />,
       },
       {
         path: "/studio-info",
