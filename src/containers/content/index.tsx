@@ -144,10 +144,10 @@ const Content = () => {
               pagination={{
                 clickable: true,
               }}
-              // autoplay={{
-              //   delay: 2500,
-              //   disableOnInteraction: false,
-              // }}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
               loop
               breakpoints={{
                 "@0.00": {
