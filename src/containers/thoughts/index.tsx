@@ -41,8 +41,16 @@ const Thoughts = () => {
           <div
             className={tw`max-w-[1100px] flex flex-col gap-[50px] p-[20px] text-sm bg-frc-50 border border-0 border-b-[1px] border-b-[#efefef] sm:h-[300px] sm:flex-row`}
           >
-            <div className={tw`w-[250px] sm:h-[250px]`}>
-              <img src={item && item[locale]?.imgPath} alt="" />
+            <div className={tw`w-[250px] sm:h-[250px] flex justify-center`}>
+              <img
+                src={
+                  item && `http://www.nanfang-art.com${item[locale]?.imgPath}`
+                }
+                alt=""
+                style={{
+                  height: "100%",
+                }}
+              />
             </div>
             <div className={tw`flex-1 flex flex-col`}>
               <div className={tw`text-lg font-bold h-[36px] text-frc-100`}>

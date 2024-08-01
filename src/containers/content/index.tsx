@@ -17,30 +17,6 @@ import "swiper/css/pagination";
 
 import "./styles.css";
 
-import {
-  author1,
-  author2,
-  author3,
-  author4,
-  author5,
-  author6,
-  author7,
-  author8,
-  author9,
-} from "../author-info/assets";
-
-const imgs = [
-  author1,
-  author2,
-  author3,
-  author4,
-  author5,
-  author6,
-  author7,
-  author8,
-  author9,
-];
-
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 
@@ -58,7 +34,9 @@ const Content = () => {
       setImgList(res.data);
       setTopPositionMap([
         ...new Set([
-          ...res.data.filter((i) => i.topPosition).map((i) => i.topPosition),
+          ...res.data
+            .filter((i: any) => i.topPosition)
+            .map((i: any) => i.topPosition),
         ]),
       ]);
     },
@@ -173,7 +151,7 @@ const Content = () => {
               {/* {Array.from({ length: 9 }).map((_, index) => ( */}
               {imgList
                 .filter((i) => i.topPosition === position)
-                .map((item, index) => (
+                .map((item) => (
                   <SwiperSlide>
                     <img
                       src={item[locale].imgPath}
@@ -252,7 +230,7 @@ const Content = () => {
             style={{
               minWidth: "400px",
             }}
-            src={`http://www.nanfang-art.com/${currentImg[locale]?.imgPath}`}
+            src={`http://www.nanfang-art.com${currentImg[locale]?.imgPath}`}
             // src={
             //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
             // }

@@ -40,7 +40,7 @@ const ExhibitionNews = () => {
         >
           <div className={tw`w-[250px] sm:h-[250px] flex justify-center`}>
             <img
-              src={`http://www.nanfang-art.com/${item[locale]?.imgPath}`}
+              src={`http://www.nanfang-art.com${item[locale]?.imgPath}`}
               alt=""
               style={{
                 height: "100%",
@@ -88,7 +88,7 @@ const ExhibitionNews = () => {
                 <span
                   className={tw`cursor-pointer hover:text-underline hover:text-frc-300`}
                 >
-                  {"--"}
+                  {item[locale]?.author || "--"}
                 </span>
                 <span>
                   {dayjs(item[locale]?.updateTime).format(
