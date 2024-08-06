@@ -2,6 +2,8 @@ import { localeAtom } from "@/models/store";
 import { useAtom } from "jotai";
 import { tw } from "twind";
 
+import Contract from "@/assets/0804_1.jpg";
+
 const ContractInfo = () => {
   const InfoMap = {
     title: {
@@ -38,7 +40,8 @@ const ContractInfo = () => {
   return (
     <div className={tw`flex h-full justify-center items-center`}>
       <div className={tw`flex flex-col text-frc-100`}>
-        <strong>{InfoMap.title[locale]}</strong>
+        <img src={Contract} alt="" />
+        {/* <strong>{InfoMap.title[locale]}</strong>
         <span>{InfoMap.email[locale]}</span>
         <span className={tw`flex`}>
           {InfoMap.tel.title[locale]}
@@ -48,7 +51,7 @@ const ContractInfo = () => {
             {InfoMap.tel.number[locale]}
           </span>
           <span></span>
-        </span>
+        </span> */}
       </div>
     </div>
   );

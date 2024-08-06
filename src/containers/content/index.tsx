@@ -1,7 +1,7 @@
 import { queryPaintDetail, queryPaintList } from "@/api";
 import { localeAtom } from "@/models/store";
 import { useRequest } from "ahooks";
-import { Modal } from "antd";
+import { Image, Modal } from "antd";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ import "swiper/css/pagination";
 import "./styles.css";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const Content = () => {
   const [imgList, setImgList] = useState<any[]>([]);
@@ -88,6 +88,10 @@ const Content = () => {
                 object-fit: cover;
               }
 
+              .ant-image {
+                height: 100%;
+              }
+
               .swiper-button-prev,
               .swiper-button-next {
                 display: flex;
@@ -126,6 +130,7 @@ const Content = () => {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
+              navigation
               loop
               breakpoints={{
                 "@0.00": {
@@ -145,7 +150,7 @@ const Content = () => {
                   spaceBetween: 50,
                 },
               }}
-              modules={[Pagination, Autoplay]}
+              modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
               {/* {Array.from({ length: 9 }).map((_, index) => ( */}
@@ -153,10 +158,19 @@ const Content = () => {
                 .filter((i) => i.topPosition === position)
                 .map((item) => (
                   <SwiperSlide>
-                    <img
-                      src={item[locale].imgPath}
-                      className={tw`h-full w-auto`}
-                    />
+                    <Image.PreviewGroup
+                      preview={imgList
+                        .filter((i) => i.topPosition === position)
+                        .map(
+                          (item) =>
+                            `http://www.nanfang-art.com/${item[locale]?.imgPath}`
+                        )}
+                    >
+                      <Image
+                        src={`http://www.nanfang-art.com/${item[locale]?.imgPath}`}
+                        className={tw`h-full w-auto`}
+                      />
+                    </Image.PreviewGroup>
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -179,7 +193,7 @@ const Content = () => {
               >
                 <img
                   className={tw`rounded-[4px]`}
-                  src={item[locale].imgPath}
+                  src={item[locale]?.imgPath}
                   onClick={() => {
                     setOpen(true);
                     setCurrentImg(item);

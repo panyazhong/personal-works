@@ -1,4 +1,16 @@
+@font-face {
+  font-family: "mashanzi";
+  src: url("./assets/fonts/MaShanZheng-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "yezi";
+  src: url("./assets/fonts/YeZiGongChangZuiHanJiangXingCao-2.ttf")
+    format("truetype");
+}
+
 #root {
+  font-family: "yezi" !important;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -42,6 +54,9 @@
   color: #888;
 }
 
+.ant-menu {
+  font-family: "yezi" !important;
+}
 .ant-menu-light {
   background: transparent;
 

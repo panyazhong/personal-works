@@ -63,8 +63,8 @@ const Header = () => {
         {
           label: {
             zh: "作品思想",
-            en: "Réflexions",
-            fr: "Thoughts",
+            en: "Thoughts",
+            fr: "Réflexions",
           },
           path: "/thoughts",
         },

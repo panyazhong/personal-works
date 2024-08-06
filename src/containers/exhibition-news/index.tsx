@@ -55,12 +55,14 @@ const ExhibitionNews = () => {
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 2;
               }
             `}
           `}
           >
-            <div className={tw`text-lg font-bold h-[72px] text-frc-100 title`}>
+            <div
+              className={tw`text-lg font-bold h-[72px] leading-[36px] text-frc-100 title`}
+            >
               {(item && item[locale]?.title) || "--"}
             </div>
             <div
