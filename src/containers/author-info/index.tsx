@@ -115,7 +115,7 @@ const AuthorInfo = () => {
   return (
     <div
       //flex flex-col items-center justify-center
-      className={tw`mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] w-full text-frc-100`}
+      className={tw`mx-auto relative flex flex-col justify-center items-center w-[100%] min-w-[300px] w-full text-frc-100 xl:flex-row`}
     >
       <div
         className={tw`w-[90%] max-w-[900px] h-[300px] text-[#000] relative w-full overflow-hidden sm:h-[600px]`}
