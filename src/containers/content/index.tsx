@@ -159,12 +159,14 @@ const Content = () => {
                 .map((item) => (
                   <SwiperSlide>
                     <Image.PreviewGroup
-                      preview={imgList
-                        .filter((i) => i.topPosition === position)
-                        .map(
-                          (item) =>
-                            `http://www.nanfang-art.com/${item[locale]?.imgPath}`
-                        )}
+                      preview={
+                        imgList
+                          .filter((i) => i.topPosition === position)
+                          .map(
+                            (item) =>
+                              `http://www.nanfang-art.com/${item[locale]?.imgPath}`
+                          ) as any
+                      }
                     >
                       <Image
                         src={`http://www.nanfang-art.com/${item[locale]?.imgPath}`}

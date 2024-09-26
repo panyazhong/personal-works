@@ -3,7 +3,10 @@ import "./App.css";
 import Header from "./containers/header";
 import { Outlet, useLocation } from "react-router-dom";
 import enUS from "antd/es/locale/en_US";
+import { useAtom } from "jotai";
+import { localeAtom } from "@/models/store";
 import "./App.css";
+import { css } from "twind/css";
 
 console.log(enUS);
 setup({
@@ -38,11 +41,20 @@ setup({
 
 const App = () => {
   const { pathname } = useLocation();
+  const [locale] = useAtom(localeAtom);
   return (
     <>
       <div
         className={tw`flex flex-col w-full h-full bg-frc-50
         ${pathname === "/studio-info" ? "bg-frc-100" : "bg-frc-50"}
+        ${locale === "zh" ? "font-['yezi']" : "font-['mashanzi']"}
+        ${css`
+          .ant-menu {
+            font-family: ${locale === "zh"
+              ? "'yezi'"
+              : "'mashanzi'"} !important;
+          }
+        `}
       `}
       >
         <Header />
