@@ -39,6 +39,15 @@ setup({
   },
 });
 
+//  ${css`
+//           // .ant-menu {
+//           //   font-family: ${locale === "zh"
+//           //     ? "'yezi'"
+//           //     : "'mashanzi'"} !important;
+//           // }
+//         `}
+//      ${locale === "zh" ? "font-['yezi']" : "font-['mashanzi']"}
+
 const App = () => {
   const { pathname } = useLocation();
   const [locale] = useAtom(localeAtom);
@@ -47,14 +56,6 @@ const App = () => {
       <div
         className={tw`flex flex-col w-full h-full bg-frc-50
         ${pathname === "/studio-info" ? "bg-frc-100" : "bg-frc-50"}
-        ${locale === "zh" ? "font-['yezi']" : "font-['mashanzi']"}
-        ${css`
-          .ant-menu {
-            font-family: ${locale === "zh"
-              ? "'yezi'"
-              : "'mashanzi'"} !important;
-          }
-        `}
       `}
       >
         <Header />

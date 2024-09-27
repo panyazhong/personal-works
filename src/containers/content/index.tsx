@@ -182,7 +182,7 @@ const Content = () => {
 
       <div
         // className={tw`flex flex-wrap flex-start items-center w-full h-full gap-[20px] px-[20px] pt-[100px]`}
-        className={tw`grid w-full h-full gap-[20px] px-[20px] pt-[20px] pb-[20px] overflow-scroll lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
+        className={tw`grid w-full h-full gap-[20px] px-[20px] pt-[20px] pb-[20px] lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
       >
         {imgList
           .filter((i) => !i.topPosition)
@@ -213,6 +213,7 @@ const Content = () => {
         <Modal
           open={open}
           footer={null}
+          width={640}
           onClose={() => {
             setOpen(false);
           }}
@@ -240,33 +241,55 @@ const Content = () => {
         
         `}
         >
-          <img
-            className={tw`rounded-[4px] w-full`}
-            height={"90%"}
-            style={{
-              minWidth: "400px",
-            }}
-            src={`http://www.nanfang-art.com${currentImg[locale]?.imgPath}`}
-            // src={
-            //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-            // }
-          ></img>
-
-          <div
-            className={tw`cursor-pointer w-full h-[32px] border-t-[1px] border-t-[#494949] flex items-center justify-between px-[20px] text-frc-100`}
-          >
-            <span
-              onClick={() => {
-                handleClick(currentImg[locale]?.groupId);
-              }}
+          <div className={tw`flex justify-between`}>
+            <div className={tw`flex-1 mr-[140px]`}>
+              <img
+                className={tw`rounded-[4px] flex-1`}
+                height={"90%"}
+                style={{
+                  minWidth: "400px",
+                }}
+                src={`http://www.nanfang-art.com${currentImg[locale]?.imgPath}`}
+                // src={
+                //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                // }
+              ></img>
+            </div>
+            <div
+              className={tw`cursor-pointer 
+                  w-[140px] 
+                  h-full 
+                  flex 
+                  flex-col 
+                  items-center
+                  justify-between 
+                  text-frc-100 
+                  pt-[50px]
+                  pb-[20px]
+                  absolute
+                  top-0
+                  bottom-0
+                  right-0
+                `}
             >
-              {currentImg[locale]?.title}
-            </span>
-            <span className={tw`text-[#fefefe]`}>
-              {dayjs(currentImg[locale]?.updateTime).format(
-                "YYYY-MM-DD HH:mm:ss"
-              )}
-            </span>
+              <span
+                onClick={() => {
+                  handleClick(currentImg[locale]?.groupId);
+                }}
+              >
+                {currentImg[locale]?.title}
+              </span>
+              <div className={tw`flex flex-col items-center`}>
+                <span className={tw`cursor-pointer underline color-[#ffebc8]`}>
+                  相关文章
+                </span>
+                <span className={tw`text-[#fefefe]`}>
+                  {dayjs(currentImg[locale]?.updateTime).format(
+                    "YYYY-MM-DD HH:mm:ss"
+                  )}
+                </span>
+              </div>
+            </div>
           </div>
         </Modal>
       </div>

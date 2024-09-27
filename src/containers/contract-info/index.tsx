@@ -1,6 +1,7 @@
 import { tw } from "twind";
 
 import Contract from "@/assets/0804_1.jpg";
+import { Image } from "antd";
 
 const ContractInfo = () => {
   // const InfoMap = {
@@ -37,8 +38,8 @@ const ContractInfo = () => {
 
   return (
     <div className={tw`flex h-full justify-center items-center`}>
-      <div className={tw`flex flex-col text-frc-100`}>
-        <img src={Contract} alt="" />
+      <div className={tw`flex flex-col text-frc-100 w-[600px]`}>
+        <Image preview={Contract} src={Contract} alt="" />
         {/* <strong>{InfoMap.title[locale]}</strong>
         <span>{InfoMap.email[locale]}</span>
         <span className={tw`flex`}>
