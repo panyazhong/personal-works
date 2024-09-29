@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { tw } from "twind";
 import { useNavigate } from "react-router-dom";
 import { useRequest } from "ahooks";
@@ -53,7 +54,9 @@ const Thoughts = () => {
               />
             </div>
             <div className={tw`flex-1 flex flex-col`}>
-              <div className={tw`text-lg font-bold h-[36px] text-frc-100`}>
+              <div
+                className={tw`text-lg font-bold h-[36px] text-frc-100 truncate max-w-[350px] md:max-w-[380px] lg:max-w-[640px] xl:max-w-[760px]`}
+              >
                 {(item && item[locale]?.title) || "--"}
               </div>
               <div
