@@ -6,7 +6,6 @@ import enUS from "antd/es/locale/en_US";
 import { useAtom } from "jotai";
 import { localeAtom } from "@/models/store";
 import "./App.css";
-import { css } from "twind/css";
 
 console.log(enUS);
 setup({
@@ -50,7 +49,6 @@ setup({
 
 const App = () => {
   const { pathname } = useLocation();
-  const [locale] = useAtom(localeAtom);
   return (
     <>
       <div
