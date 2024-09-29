@@ -61,16 +61,16 @@ const Thoughts = () => {
               </div>
               <div
                 className={tw`w-full flex-1 flex flex-col justify-between
-              ${css`
-                .overell {
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  display: -webkit-box;
-                  -webkit-box-orient: vertical;
-                  -webkit-line-clamp: 5;
-                }
-              `}
-            `}
+                  ${css`
+                    .overell {
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 5;
+                    }
+                  `}
+                `}
               >
                 <div
                   className={tw`text-sm text-frc-100 cursor-pointer overell`}

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { queryPaintDetail, queryPaintList } from "@/api";
 import { localeAtom } from "@/models/store";
-import { useRequest } from "ahooks";
+import { useAsyncEffect, useRequest } from "ahooks";
 import { Image, Modal } from "antd";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
@@ -20,8 +21,15 @@ import "./styles.css";
 // import required modules
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
+const label = {
+  zh: "作品思想",
+  en: "Thoughts",
+  fr: "Réflexions",
+};
+
 const Content = () => {
   const [imgList, setImgList] = useState<any[]>([]);
+  const [detail, setDetail] = useState<any>();
   const [open, setOpen] = useState<boolean>(false);
   const [currentImg, setCurrentImg] = useState<any>({});
   const [locale] = useAtom(localeAtom);
@@ -43,18 +51,23 @@ const Content = () => {
   });
 
   const handleClick = async (id: string) => {
-    const res = await queryPaintDetail({ groupId: id });
-
-    const { groupId } = res.data[locale];
-
-    if (groupId) {
-      navigate(`/detail/${groupId}`);
-    }
+    navigate(`/detail/${id}`);
   };
+
+  useAsyncEffect(async () => {
+    if (!open) return;
+    const res = await queryPaintDetail({
+      groupId: currentImg[locale]?.groupId,
+    });
+
+    setDetail(res.data);
+  }, [open]);
 
   useEffect(() => {
     runAsync();
   }, []);
+
+  console.log(detail, locale);
 
   return (
     <div className={tw`w-full px-[20px] h-full overflow-y-scroll`}>
@@ -241,8 +254,8 @@ const Content = () => {
         
         `}
         >
-          <div className={tw`flex justify-between`}>
-            <div className={tw`flex-1 mr-[140px]`}>
+          <div className={tw`h-full flex flex-col justify-between sm:flex-row`}>
+            <div className={tw`flex-1  sm:mr-[170px]`}>
               <img
                 className={tw`rounded-[4px] flex-1`}
                 height={"90%"}
@@ -255,35 +268,65 @@ const Content = () => {
                 // }
               ></img>
             </div>
+
             <div
               className={tw`cursor-pointer 
-                  w-[140px] 
-                  h-full 
+                  w-full
+                  h-[60px]
                   flex 
-                  flex-col 
+                 
                   items-center
                   justify-between 
                   text-frc-100 
-                  pt-[50px]
-                  pb-[20px]
-                  absolute
-                  top-0
+                  
+                 
+                 
                   bottom-0
                   right-0
+                  sm:h-full 
+                  sm:w-[160px] 
+                  sm:absolute
+                  sm:top-0
+                  sm:pt-[50px]
+                  sm:pb-[20px]
+                  sm:flex-col
                 `}
             >
-              <span
-                onClick={() => {
-                  handleClick(currentImg[locale]?.groupId);
-                }}
-              >
-                {currentImg[locale]?.title}
-              </span>
-              <div className={tw`flex flex-col items-center`}>
-                <span className={tw`cursor-pointer underline color-[#ffebc8]`}>
-                  相关文章
+              <div className={tw`w-full flex flex-col items-start`}>
+                <span className={tw`w-full text-[15px] truncate`}>
+                  {currentImg[locale]?.title}
                 </span>
-                <span className={tw`text-[#fefefe]`}>
+                <span className={tw`mt-2 overell hidden sm:block`}>
+                  {currentImg[locale]?.content}
+                </span>
+              </div>
+
+              <div className={tw`flex flex-col items-center w-full`}>
+                <div className={tw`flex w-full justify-end sm:flex-col`}>
+                  <span
+                    className={tw`w-[87px] justify-between text-right sm:text-left sm:w-[140px]`}
+                  >
+                    {label[locale]}：
+                  </span>
+                  <span
+                    className={tw`w-auto text-right cursor-pointer underline color-[#ffebc8]  truncate sm:text-left sm:w-[140px] sm:text-left`}
+                    onClick={() => {
+                      console.log(detail);
+                      if (
+                        detail?.articleInfo &&
+                        detail?.articleInfo?.articleGroupId
+                      ) {
+                        handleClick(detail?.articleInfo?.articleGroupId);
+                      }
+                    }}
+                  >
+                    {detail?.articleInfo ? detail?.articleInfo[locale] : "--"}
+                  </span>
+                </div>
+
+                <span
+                  className={tw`text-[#fefefe] text-right w-full text-[12px]`}
+                >
                   {dayjs(currentImg[locale]?.updateTime).format(
                     "YYYY-MM-DD HH:mm:ss"
                   )}
