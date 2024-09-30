@@ -3,8 +3,6 @@ import "./App.css";
 import Header from "./containers/header";
 import { Outlet, useLocation } from "react-router-dom";
 import enUS from "antd/es/locale/en_US";
-import { useAtom } from "jotai";
-import { localeAtom } from "@/models/store";
 import "./App.css";
 
 console.log(enUS);

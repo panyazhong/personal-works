@@ -2,7 +2,7 @@
 import { queryPaintDetail, queryPaintList } from "@/api";
 import { localeAtom } from "@/models/store";
 import { useAsyncEffect, useRequest } from "ahooks";
-import { Image, Modal } from "antd";
+import { Image, Modal, Spin } from "antd";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
@@ -20,6 +20,7 @@ import "./styles.css";
 
 // import required modules
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const label = {
   zh: "作品思想",
@@ -32,9 +33,10 @@ const Content = () => {
   const [detail, setDetail] = useState<any>();
   const [open, setOpen] = useState<boolean>(false);
   const [currentImg, setCurrentImg] = useState<any>({});
+  const [loading, setLoading] = useState<boolean>(false);
   const [locale] = useAtom(localeAtom);
   const navigate = useNavigate();
-  const [topPositionMap, setTopPositionMap] = useState<number[]>([1, 2]);
+  const [topPositionMap, setTopPositionMap] = useState<number[]>([1]);
 
   const { runAsync } = useRequest(queryPaintList, {
     manual: true,
@@ -55,19 +57,22 @@ const Content = () => {
   };
 
   useAsyncEffect(async () => {
-    if (!open) return;
+    if (!open) {
+      setCurrentImg({});
+      return;
+    }
+    setLoading(true);
     const res = await queryPaintDetail({
       groupId: currentImg[locale]?.groupId,
     });
 
     setDetail(res.data);
+    setLoading(false);
   }, [open]);
 
   useEffect(() => {
     runAsync();
   }, []);
-
-  console.log(detail, locale);
 
   return (
     <div className={tw`w-full px-[20px] h-full overflow-y-scroll`}>
@@ -195,7 +200,7 @@ const Content = () => {
 
       <div
         // className={tw`flex flex-wrap flex-start items-center w-full h-full gap-[20px] px-[20px] pt-[100px]`}
-        className={tw`grid w-full h-full gap-[20px] px-[20px] pt-[20px] pb-[20px] lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
+        className={tw`grid w-full gap-[20px] px-[20px] pt-[20px] pb-[20px] lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2`}
       >
         {imgList
           .filter((i) => !i.topPosition)
@@ -226,7 +231,11 @@ const Content = () => {
         <Modal
           open={open}
           footer={null}
-          width={640}
+          key={`${open}`}
+          width={750}
+          style={{
+            minHeight: "200px",
+          }}
           onClose={() => {
             setOpen(false);
           }}
@@ -254,23 +263,38 @@ const Content = () => {
         
         `}
         >
-          <div className={tw`h-full flex flex-col justify-between sm:flex-row`}>
-            <div className={tw`flex-1  sm:mr-[170px]`}>
-              <img
-                className={tw`rounded-[4px] flex-1`}
-                height={"90%"}
-                style={{
-                  minWidth: "400px",
-                }}
-                src={`http://www.nanfang-art.com${currentImg[locale]?.imgPath}`}
-                // src={
-                //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-                // }
-              ></img>
-            </div>
-
+          {loading ? (
             <div
-              className={tw`cursor-pointer 
+              className={tw`
+                  w-full
+                  h-[300px]
+                  flex
+                  items-center
+                  justify-center
+                 `}
+            >
+              <Spin indicator={<LoadingOutlined spin />} />
+            </div>
+          ) : (
+            <div
+              className={tw`h-full flex flex-col justify-between sm:flex-row`}
+            >
+              <div className={tw`flex-1 sm:mr-[170px]`}>
+                <img
+                  className={tw`rounded-[4px] flex-1`}
+                  height={"90%"}
+                  style={{
+                    minWidth: "400px",
+                  }}
+                  src={`http://www.nanfang-art.com${currentImg[locale]?.imgPath}`}
+                  // src={
+                  //   "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                  // }
+                ></img>
+              </div>
+
+              <div
+                className={tw`cursor-pointer 
                   w-full
                   h-[60px]
                   flex 
@@ -291,49 +315,55 @@ const Content = () => {
                   sm:pb-[20px]
                   sm:flex-col
                 `}
-            >
-              <div className={tw`w-full flex flex-col items-start`}>
-                <span className={tw`w-full text-[15px] truncate`}>
-                  {currentImg[locale]?.title}
-                </span>
-                <span className={tw`mt-2 overell hidden sm:block`}>
-                  {currentImg[locale]?.content}
-                </span>
-              </div>
-
-              <div className={tw`flex flex-col items-center w-full`}>
-                <div className={tw`flex w-full justify-end sm:flex-col`}>
-                  <span
-                    className={tw`w-[87px] justify-between text-right sm:text-left sm:w-[140px]`}
-                  >
-                    {label[locale]}：
+              >
+                <div className={tw`w-full flex flex-col items-start`}>
+                  <span className={tw`w-full text-[15px] truncate`}>
+                    {currentImg[locale]?.title}
                   </span>
-                  <span
-                    className={tw`w-auto text-right cursor-pointer underline color-[#ffebc8]  truncate sm:text-left sm:w-[140px] sm:text-left`}
-                    onClick={() => {
-                      console.log(detail);
-                      if (
-                        detail?.articleInfo &&
-                        detail?.articleInfo?.articleGroupId
-                      ) {
-                        handleClick(detail?.articleInfo?.articleGroupId);
-                      }
-                    }}
-                  >
-                    {detail?.articleInfo ? detail?.articleInfo[locale] : "--"}
+                  <span className={tw`mt-2 overell hidden sm:block`}>
+                    {currentImg[locale]?.content}
                   </span>
                 </div>
 
-                <span
-                  className={tw`text-[#fefefe] text-right w-full text-[12px]`}
-                >
-                  {dayjs(currentImg[locale]?.updateTime).format(
-                    "YYYY-MM-DD HH:mm:ss"
-                  )}
-                </span>
+                <div className={tw`flex flex-col items-center w-full`}>
+                  {detail?.articleInfo &&
+                    detail?.articleInfo?.articleGroupId && (
+                      <div className={tw`flex w-full justify-end sm:flex-col`}>
+                        <span
+                          className={tw`w-[87px] justify-between text-right sm:text-left sm:w-[140px]`}
+                        >
+                          {label[locale]}：
+                        </span>
+                        <span
+                          className={tw`w-auto text-right cursor-pointer underline color-[#ffebc8]  truncate sm:text-left sm:w-[140px] sm:text-left`}
+                          onClick={() => {
+                            console.log(detail);
+                            if (
+                              detail?.articleInfo &&
+                              detail?.articleInfo?.articleGroupId
+                            ) {
+                              handleClick(detail?.articleInfo?.articleGroupId);
+                            }
+                          }}
+                        >
+                          {detail?.articleInfo
+                            ? detail?.articleInfo[locale]
+                            : "--"}
+                        </span>
+                      </div>
+                    )}
+
+                  <span
+                    className={tw`text-[#fefefe] text-right w-full text-[12px] pr-2`}
+                  >
+                    {dayjs(currentImg[locale]?.updateTime).format(
+                      "YYYY-MM-DD HH:mm:ss"
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </Modal>
       </div>
     </div>
