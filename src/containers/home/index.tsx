@@ -34,18 +34,18 @@ const Home = () => {
         className={tw`text-frc-100 flex flex-col items-end sm:w-[60%] w-[90%] w-full text-right`}
       >
         <div
-          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+          className={tw`text-[12px]  sm:text-[16px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px]`}
         >
           {InfoMap[locale]?.title}
         </div>
 
         <div
-          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+          className={tw`text-[12px]  sm:text-[16px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px]`}
         >
           {InfoMap[locale]?.context1}
         </div>
         <div
-          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+          className={tw`text-[12px]  sm:text-[16px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px]`}
         >
           {InfoMap[locale]?.context2}
         </div>
