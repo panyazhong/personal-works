@@ -6,9 +6,9 @@ import { localeAtom } from "@/models/store";
 const Home = () => {
   const InfoMap: any = {
     zh: {
-      title: "旅法画家 - 南方",
+      title: "南方",
       context1: "旅法画家、艺术家、纪录片导演、策展人",
-      context2: "UAFC中法艺术家协会会长",
+      context2: "法国UAFC中法艺术家协会会长",
     },
     en: {
       title: "NAN Fang",
@@ -33,10 +33,22 @@ const Home = () => {
       <div
         className={tw`text-frc-100 flex flex-col items-end sm:w-[60%] w-[90%] w-full text-right`}
       >
-        <div className={tw`text-[32px]`}>{InfoMap[locale]?.title}</div>
+        <div
+          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+        >
+          {InfoMap[locale]?.title}
+        </div>
 
-        <div className={tw`text-[30px]`}>{InfoMap[locale]?.context1}</div>
-        <div className={tw`text-[30px]`}>{InfoMap[locale]?.context2}</div>
+        <div
+          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+        >
+          {InfoMap[locale]?.context1}
+        </div>
+        <div
+          className={tw`text-[14px]  sm:text-[20px] md:text-[28px] lg:text-[32px]`}
+        >
+          {InfoMap[locale]?.context2}
+        </div>
       </div>
     </div>
   );

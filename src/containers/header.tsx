@@ -93,14 +93,14 @@ const Header = () => {
           },
           path: "/art-merchandise",
         },
-        // {
-        //   label: {
-        //     zh: "加入协会",
-        //     en: "Join the Union",
-        //     fr: "Rejoindre l’Union",
-        //   },
-        //   path: "/join-union",
-        // },
+        {
+          label: {
+            zh: "加入协会",
+            en: "Join the Union",
+            fr: "Rejoindre l’Union",
+          },
+          path: "/join-union",
+        },
       ],
     },
     {
