@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ApplyInfo } from "./type";
 
 const queryArticleList = () => {
   return axios
@@ -66,6 +67,31 @@ const queryExhibitionDetail = (data: { groupId: string }) => {
     });
 };
 
+// join-union
+const uploadFile = (data: { file: File }) => {
+  return axios
+    .request({
+      url: "/back/apply/upload",
+      method: "post",
+      data,
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+const applyJoin = (data: ApplyInfo) => {
+  return axios
+    .request({
+      url: "/back/apply/add",
+      method: "post",
+      data,
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+
 export {
   queryArticleList,
   queryArticleDetail,
@@ -73,4 +99,6 @@ export {
   queryPaintDetail,
   queryExhibitionList,
   queryExhibitionDetail,
+  uploadFile,
+  applyJoin,
 };
