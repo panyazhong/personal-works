@@ -25,6 +25,7 @@ const JoinUnion = () => {
     onDrop(e) {
       console.log("Dropped files", e.dataTransfer.files);
     },
+    showUploadList: false,
   };
 
   const handleClick = async () => {
@@ -85,18 +86,26 @@ const JoinUnion = () => {
               <>
                 <Button
                   type="text"
-                  className={tw`absolute top-[0px] right-[0px] z-[99]`}
+                  className={tw`absolute top-[0px] right-[0px] z-[99] text-[#ccc]`}
                   onClick={() => {
                     setFilePath("");
                   }}
                 >
                   删除
                 </Button>
-                <Image
-                  src={`http://www.nanfang-art.com${filePath}`}
-                  className={tw`w-full`}
-                  preview={false}
-                />
+                {filePath.includes("png") ||
+                filePath.includes("jpg") ||
+                filePath.includes("jpeg") ? (
+                  <Image
+                    src={`http://www.nanfang-art.com${filePath}`}
+                    className={tw`w-full`}
+                    preview={false}
+                  />
+                ) : (
+                  <span className="text-[#ccc] text-[14px]">
+                    {filePath.split("/").reverse()[0]}
+                  </span>
+                )}
               </>
             )}
           </div>
